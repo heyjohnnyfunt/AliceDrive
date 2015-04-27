@@ -1,0 +1,46 @@
+#navigation {
+    background-color: #000000;
+    display: inline;
+}
+
+.nav{
+    border-bottom: 1px #969696 solid;
+    border-top: 1px #969696 solid;
+}
+
+.nav ul {
+    list-style: none;
+    margin: auto;
+    display: table;
+    padding: 0;
+}
+
+.nav li {
+    float: left;
+    position: relative;
+}
+
+.nav li a {
+    padding: 15px 20px;
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+    color: #969696;
+    -webkit-transition: all 0.25s ease-in-out;
+}
+
+.nav li a:hover {
+    color: #ffffff; /*373855*/
+    background: transparent; /*FFCC33*/
+    -webkit-box-shadow: 0 0 20px #969696;
+    -moz-box-shadow: 0 0 30px #969696;
+    box-shadow: 0 0 20px #969696;
+    -webkit-transition: all 0.25s ease-in-out;
+}
+
+.menu-trigger {
+    display: none;
+}

@@ -1,0 +1,17 @@
+.nav li a {
+    font-size: 15px;
+    padding: 10px 12px;
+}
+
+#edit-span{
+    font-size: 15px;
+    padding: 10px 5px;
+}
+
+.home-button {
+    padding: 0;
+    float: left;
+}
+#logout {
+    padding: 0;
+}

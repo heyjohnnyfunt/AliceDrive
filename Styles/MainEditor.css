@@ -1,0 +1,77 @@
+#main-form > div:first-child {
+    padding: 0;
+}
+
+#main-form > div {
+    padding: 5px 0;
+}
+
+.dashboard {
+    padding: 10px;
+}
+
+.left-bar {
+    margin: auto;
+    display: inline-block;
+    width: 25%;
+    list-style: none;
+    vertical-align: top;
+
+}
+
+.left-bar-menu{
+    list-style: none;
+    padding: 0;
+}
+
+.left-bar-menu a {
+    padding: 5px 10px;
+    display: block;
+    text-decoration: none;
+    color: #000000;
+    transition: 0.25s ease-in-out;
+}
+
+.left-bar-menu a:last-child {
+    border-bottom: 1px #373855 solid;
+    font-weight: normal;
+}
+
+.left-bar-menu a:hover {
+    background: #373855;
+    color: #ffffff;
+}
+
+.left-bar p {
+    margin: 0;
+}
+
+.right-bar {
+    display: inline-block;
+    padding: 0 0 0 20px;
+    min-width: 200px;
+    width: 70%;
+}
+
+textarea {
+    width: 100%;
+}
+
+.edit-icon{
+    float: right;
+    width: 14px;
+    height: 14px;
+    line-height: 14px;
+    display: inline-block;
+    background: url("../Images/icons/edit.png") no-repeat center;
+    background-size: 14px 14px;
+}
+
+.trash-icon{
+    width: 14px;
+    height: 14px;
+    line-height: 14px;
+    display: inline-block;
+    background: url("../Images/icons/trash.png") no-repeat center;
+    background-size: 14px 14px;
+}

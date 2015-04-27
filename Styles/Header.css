@@ -1,0 +1,38 @@
+#header{
+    background: #000000;/*373855*/
+    /* clear: both;*/
+    width: 100%;
+}
+
+#banner{
+    background: url("/Images/alice.png") no-repeat center;
+    background-size: 60% auto;
+    padding-top:120px;
+    max-width: 980px;
+    margin: auto;
+}
+
+#login{
+    display: block;
+    color: #ffffff;
+    width: 100%;
+}
+
+#debug-console{
+    float: left;
+    width: 100%;
+    background: #000000;
+    color: #ffffff;
+}
+
+.loginForm{
+    display: none;
+    width: auto;
+    background: gray;
+    padding: 10px;
+}
+
+.login-expended{
+    display: block;
+}
+

@@ -1,0 +1,69 @@
+/* MENU */
+
+.menu-trigger {
+    display: block;
+    cursor: pointer;
+    padding: 8px;
+    text-align: left;
+    background: #000000;
+    color: #ffffff;
+}
+
+.nav {
+    display: none;
+}
+
+.nav-expanded {
+    display: block;
+}
+
+.nav ul {
+    width: 100%;
+    padding: 0;
+}
+
+.nav li {
+    font-size: 18px;
+    float: none;
+    border-bottom: 2px solid #fff;
+}
+
+.nav li:last-child {
+    float: none;
+    border-bottom: none;
+}
+
+/* HEADER */
+
+#edit-span {
+    display: none;
+}
+
+#logout {
+    float: right;
+}
+
+/* CONTENT stylesheet*/
+
+.left-bar {
+    width: 100%;
+}
+
+.right-bar{
+    width: 95%;
+}
+
+#main-form > div:first-child {
+    padding: 5px 0;
+}
+
+.left-col{
+    width: 100%;
+}
+.right-col{
+    display: none;
+}
+
+.delete-button{
+    float: none;
+}

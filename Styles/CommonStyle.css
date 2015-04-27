@@ -1,0 +1,127 @@
+html{
+    /* to set footer on page bottom always */
+    height:100%;
+}
+body{
+    font-family:  /*Quicksand,*/'Open Sans', Helvetica, Arial, sans-serif;
+    margin: 0;
+    min-width: 200px;
+    height: 100%;
+}
+
+#wrapper{
+    min-height: 100%;
+    position: relative;
+}
+
+#content{
+    background-color: #f7f7f7;
+    margin: auto;
+    max-width: 1200px;
+    padding: 10px 0 100px 20px;
+}
+
+footer{
+    max-width: 100%;
+    margin: auto;
+    padding: 10px 15px;
+    bottom: 0;
+    position: absolute;
+}
+
+h1{
+    margin: 20px 0 0 0;
+}
+
+h3{
+    margin: 0;
+}
+
+.error{
+    font-size: 22px;
+    font-weight: bold;
+    color: red;
+    padding: 5px 0;
+    margin: 0;
+}
+
+.formButton{
+    display: inline;
+}
+
+.button{
+    cursor: pointer;
+    color: #ffffff;
+    background:#000000;
+    text-align: center;
+    padding: 10px 15px;
+    border: 0 none;
+    letter-spacing: 1px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.25s ease-in-out;
+}
+
+.button:hover {
+    background-color: #373855;
+    transition: all 0.25s ease-in-out;
+    color: #ffffff;
+}
+
+.button:active {
+    position: relative;
+    top: 1px;
+}
+
+.delete-button{
+    float: right;
+}
+
+.input{
+    background: #ffffff;
+    font-size: 16px;
+    width: 100%;
+    padding: 3px;
+    margin: 0 6px 5px 0;
+    outline: 0;
+    border: 1px solid #d9d9d9;
+}
+
+.input:focus {
+    border: 1px solid #373855;
+    -webkit-box-shadow: 0 0 3px 0 #373855;
+    -moz-box-shadow: 0 0 3px 0 #373855;
+    box-shadow: 0 0 3px 0 #373855;
+}
+
+.left-col{
+    width: 68%;
+    margin: auto;
+    display: inline-block;
+}
+
+.right-col {
+    display: inline-block;
+    width: 27%;
+    padding: 10px 12px;
+    vertical-align: top;
+    color: #FFFFFF;
+    background: #373855;
+}
+
+.article{
+    text-decoration: none;
+    color: #373855;
+    transition: all 0.25s ease-in-out;
+}
+
+.article article{
+    padding: 5px 10px;
+}
+
+.article article:hover{
+    color: #FFFFFF;
+    background: #373855;
+    transition: all 0.25s ease-in-out;
+}
