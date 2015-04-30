@@ -7,7 +7,7 @@
 
         // if true, delete item and refresh
         if(c)
-            window.location = "&delete=" + id;
+            window.location = "?page=news&delete=" + id;
     }
 </script>
 
@@ -40,8 +40,7 @@
                     <i class="edit-icon"></i>
                     <p>Post date: <?php echo $topic['post_date'] ?></p>
                 </a>
-                <a href="?delete=<?php echo $topic['id'] ?>" type="submit"
-                   onclick='showConfirm(<?php echo $topic['id'] ?>)'>Delete
+                <a href="#" onclick='showConfirm(<?php echo $topic['id'] ?>)'>Delete
                     <i class="trash-icon" ></i></a>
             </li>
         <?php }; ?>

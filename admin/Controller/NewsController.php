@@ -30,6 +30,13 @@ namespace Admin {
                 {
                     $newsItem = $this->GetPageData('id', $_GET['id']);
                     $this->view->set('newsItem', $newsItem);
+
+                    if (isset($_GET['delete'])){
+                        if($this->DeleteNews($_GET['delete']))
+                            $this->view->set('message', 'Topic was deleted');
+                        else
+                            $this->view->set('message', 'Error while deleting.');
+                    }
                 }
 
                 $this->view->output('NewsView.php', 'Template.php');
@@ -42,6 +49,11 @@ namespace Admin {
         function InsertNews($id = null)
         {
             return $this->model->InsertUpdate($id);
+        }
+
+        function DeleteNews($id)
+        {
+            return $this->model->Delete($id);
         }
 
         function GetTopics()

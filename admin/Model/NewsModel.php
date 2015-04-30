@@ -18,7 +18,7 @@ namespace Admin {
             $body = $this->_db->real_escape_string($_POST['body']);
 
             //TODO: fix - after page reload repeated form sending
-            if (isset($_GET['id']) && trim($_GET['id']) != '')
+            if ($id != null)//(isset($_GET['id']) && trim($_GET['id']) != '')
             {
                 $sql = "UPDATE
                         news
@@ -51,6 +51,13 @@ namespace Admin {
             }
 
             return $message;
+        }
+
+        function Delete($id)
+        {
+            $sql = "DELETE FROM news WHERE id = $id";
+            $this->_setSql($sql);
+            return $this->getRow();
         }
 
         /* Gets menu from "pages" Database */
