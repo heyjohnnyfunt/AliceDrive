@@ -19,7 +19,8 @@ namespace Admin
         {
             $url = $this->parse_path();
 
-            if (isset($url['page']) && file_exists(ADMIN_PATH . ADMIN_CONTROLLER . $url['page'] . 'Controller' . '.php')) {
+            if (isset($url['page']) && file_exists(ADMIN_PATH . ADMIN_CONTROLLER . $url['page'] . 'Controller' . '.php')
+            && $url['page'] != 'page') {
                 $this->controller = $url['page'];
             }
 
@@ -27,17 +28,16 @@ namespace Admin
             $modelName = ucwords($this->controller) . 'Model';
             $modelPath = ADMIN_PATH . ADMIN_MODEL . $modelName . '.php';
             if (file_exists($modelPath)) {
-                include ADMIN_PATH . ADMIN_MODEL . $modelName . '.php';
+                require_once ADMIN_PATH . ADMIN_MODEL . $modelName . '.php';
             }
 
             // Controller
             $controllerName = ucwords($this->controller) . 'Controller';
-            $viewName = ucwords($this->controller) . 'View';
             require_once ADMIN_PATH . ADMIN_CONTROLLER . $controllerName . '.php';
 
             // To use dynamic name of controller:
             $controllerName = $this->namespace . DS . $controllerName;
-            $this->controller = new $controllerName($viewName, $user);
+            $this->controller = new $controllerName(ucwords($this->controller), $user);
 
             // Params
             $this->params = $url ? array_values($url) : [];

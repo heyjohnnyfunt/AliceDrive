@@ -11,16 +11,16 @@ namespace Admin {
 
     class CommunityController extends BaseController
     {
-        public function __construct($model = null, $user = null)
+       /* public function __construct($controller = null, $user = null)
         {
-            if ($model != null) parent::__construct($model, $user);
+            if ($controller != null) parent::__construct($controller, $user);
             $this->model = new CommunityModel();
-        }
+        }*/
 
         public function index()
         {
             try {
-                $userArray = $this->GetAllUsernames();
+                $userArray = $this->GetAllUsers();
                 $this->view->set('userArray', $userArray);
                 $this->view->set('page_title', 'News');
                 $this->view->set('site_title', 'Alice Drive');
@@ -32,11 +32,30 @@ namespace Admin {
                     $this->view->set('userItem', $userItem);
                 }
 
-                $this->view->output('CommunityView.php', 'Template.php');
+                if (isset($_GET['delete'])){
+                    if($this->DeleteUser($_GET['delete']))
+                        $this->view->set('message', 'User was deleted');
+                    else
+                        $this->view->set('message', 'Error while deleting.');
+                }
+
+                if (isset($_POST['SaveButtonClick'])) {
+                    if(isset($_GET['id']))
+                        $this->view->set('message',  $this->InsertUser($_GET['id']));
+                    else
+                        $this->view->set('message',  $this->InsertUser());
+                }
+
+                $this->view->output($this->viewFileName);
 
             } catch (Exception $e) {
                 echo "Application error:" . $e->getMessage();
             }
+        }
+
+        function DeleteUser($id)
+        {
+            return $this->model->Delete("users", $id);
         }
 
         function InsertUser($id = null)
@@ -44,9 +63,9 @@ namespace Admin {
             return $this->model->InsertUpdate($id);
         }
 
-        function GetAllUsernames()
+        function GetAllUsers()
         {
-            return $this->model->GetUsernamesFromDatabase();
+            return $this->model->GetMenu();
         }
 
         function GetUser($param, $value)

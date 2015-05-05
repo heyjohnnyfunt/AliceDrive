@@ -12,10 +12,11 @@ namespace Admin {
     {
         function InsertUpdate($id = null)
         {
-            $user = $this->_db->real_escape_string($_POST['user']);
-            $slug = $this->_db->real_escape_string($_POST['slug']);
-            $title = $this->_db->real_escape_string($_POST['title']);
-            $body = $this->_db->real_escape_string($_POST['body']);
+            $user = $this->_db->real_escape_string($this->transform_input($_POST['user']));
+            $slug = $this->_db->real_escape_string($this->transform_input($_POST['slug']));
+            $title = $this->_db->real_escape_string($this->transform_input($_POST['title']));
+            $body = $this->_db->real_escape_string(($_POST['body']));
+            $intro = strip_tags(mb_strcut($body,0,96) . '...');
 
             //TODO: fix - after page reload repeated form sending
             if ($id != null)//(isset($_GET['id']) && trim($_GET['id']) != '')
@@ -26,16 +27,18 @@ namespace Admin {
                         user_id = '$user',
                         slug = '$slug',
                         title = '$title',
+                        intro = '$intro',
                         body = '$body'
                     WHERE
                         id=$id";
 
                 $action = 'updated';
             } else {
+
                 $sql = "INSERT INTO
-                        news (user_id, slug, title, body)
+                        news (user_id, slug, title, intro, body)
                     VALUES
-                        ('$user','$slug','$title','$body')";
+                        ('$user','$slug','$title','$intro','$body')";
 
                 $action = 'added';
             }
@@ -53,39 +56,27 @@ namespace Admin {
             return $message;
         }
 
-        function Delete($id)
+        public function getRowByParam($cond)
         {
-            $sql = "DELETE FROM news WHERE id = $id";
-            $this->_setSql($sql);
-            return $this->getRow();
+            $sql = "SELECT * FROM news WHERE $cond";
+            $this->setSql($sql);
+            return parent::getRow();
         }
 
-        /* Gets menu from "pages" Database */
-        function get_data()
+        /* Gets menu from Database */
+        function GetMenu()
         {
             $sql = "SELECT
-                    id, title, post_date
+                    id,
+                    title,
+                    DATE_FORMAT(post_date, '%H:%i %d.%m.%Y') as date
                 FROM
                     news
                 ORDER BY
                     post_date DESC";
-            $result = $this->_db->query($sql);
-            $titleArray = array();
-
-            if ($result->num_rows > 0)
-                while ($data = $result->fetch_array()) {
-                    array_push($titleArray, $data);
-                }
-            else $titleArray = 'Error';
-
-            return $titleArray;
+            $this->setSql($sql);
+            return $this->getAll();
         }
 
-        public function getRowByParam($cond)
-        {
-            $sql = "SELECT * FROM news WHERE $cond";
-            $this->_setSql($sql);
-            return parent::getRow();
-        }
     }
 }

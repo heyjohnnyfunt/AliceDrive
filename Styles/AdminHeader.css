@@ -1,3 +1,9 @@
+#header{
+    background: #000000;
+    width: 100%;
+}
+
+
 .home-button {
     padding: 9px 5px;
     float: left;
@@ -13,7 +19,7 @@
 
 #logout {
     color: #ffffff;
-    padding: 10px;
+    margin-top: 10px;
 }
 
 #logout p {

@@ -8,12 +8,12 @@ if ($articles) {
                     <h3><?php echo $topic['title']; ?></h3>
 
                     <p>Published on:
-                        <time pubdate="pubdate"><?php echo $topic['date']; ?></time>
+                        <time><?php echo $topic['date']; ?></time>
                     </p>
                 </header>
-                <!--<p><?php /*echo $a['intro']; */ ?></p>-->
+                <p><?php echo $topic['intro']; ?></p>
 
-                <hr/>
+                <hr>
             </article>
         </a>
     <?php

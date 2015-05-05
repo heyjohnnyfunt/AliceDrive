@@ -29,7 +29,7 @@ namespace Admin {
             return $this->data[$key];
         }
 
-        public function output($contentView, $templateView)
+        public function output($contentView)
         {
             if (!file_exists($this->file)) {
                 throw new Exception("Model file " . $this->file . " doesn't exist.");
@@ -42,7 +42,7 @@ namespace Admin {
             $output = ob_get_contents();
             ob_end_clean();
 
-            include ADMIN_PATH . $templateView;
+            include ADMIN_PATH . "Template.php";
 
             return $output;
         }

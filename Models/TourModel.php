@@ -33,7 +33,7 @@ namespace MainWebSite {
             $sql = "SELECT
                     id,
                     place,
-                    DATE_FORMAT(date_time, '%d.%m.%Y') as date,
+                    DATE_FORMAT(date_time, '%H:%i %d.%m.%Y') as date,
                     body
                 FROM
                     tours
@@ -59,7 +59,7 @@ namespace MainWebSite {
                     body
                 FROM
                     tours
-                ORDER BY id DESC
+                ORDER BY date_time DESC
                 LIMIT 1";
 
             $this->_setSql($sql);

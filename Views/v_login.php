@@ -15,6 +15,8 @@
 
         <input type="submit" name="login" class="button" value="Log In"/>
 
+        <!-- TODO: do not forget about this -->
+        <a href="/admin" class="button">Admin</a>
         <!-- <div class="loginForm">
              <form method="POST">
                  <p> Username:
@@ -28,4 +30,6 @@
          </div>-->
 
     </form>
+
+
 </div>

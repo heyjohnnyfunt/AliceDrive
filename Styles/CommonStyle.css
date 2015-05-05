@@ -15,7 +15,7 @@ body{
 }
 
 #content{
-    background-color: #f7f7f7;
+    /*background-color: #f7f7f7;*/
     margin: auto;
     max-width: 1200px;
     padding: 10px 0 100px 20px;
@@ -31,6 +31,8 @@ footer{
 
 h1{
     margin: 20px 0 0 0;
+    color: #FFFFFF;
+    background: #ff0000;
 }
 
 h3{
@@ -112,16 +114,22 @@ h3{
 
 .article{
     text-decoration: none;
-    color: #373855;
-    transition: all 0.25s ease-in-out;
+    color: #FFFFFF;
 }
 
 .article article{
-    padding: 5px 10px;
+    padding: 15px;
+    margin: 10px;
+    display: inline-block;
+    max-width: 40%;
+    background: #373855;
+    opacity: 0.85;
+    transition: all 0.25s ease-in-out;
 }
 
 .article article:hover{
-    color: #FFFFFF;
-    background: #373855;
+    color: #373855;
+    background: #FFFFFF;
+    opacity: 1;
     transition: all 0.25s ease-in-out;
 }

@@ -14,6 +14,7 @@ namespace MainWebSite {
                     id,
                     title,
                     slug,
+                    intro,
                     DATE_FORMAT(post_date, '%d.%m.%Y') as date
                 FROM
                     news

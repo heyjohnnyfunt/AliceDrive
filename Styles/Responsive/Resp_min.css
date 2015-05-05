@@ -67,3 +67,8 @@
 .delete-button{
     float: none;
 }
+
+.article article{
+    display: block;
+    max-width: 100%;
+}

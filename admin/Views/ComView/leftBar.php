@@ -1,25 +1,28 @@
-<div class="left-bar">
-    <?php
-    if (isset($_POST['SaveButtonClick'])) {
-        $comController = new Admin\CommunityController();
-        if(isset($_GET['id']))
-            $message = $comController->InsertUser($_GET['id']);
-        else
-            $message = $comController->InsertUser();
+<script>
+    function showConfirm(id) {
+        var c = confirm("Are you sure you wish to delete this item?");
+        if (c)
+            window.location = "?page=community&delete=" + id;
     }
-    ?>
+</script>
+
+<div class="left-bar">
 
     <a href="?page=community" class="button">+ New user</a>
 
     <ul class="left-bar-menu">
-        <?php
-        if ($userArray)
-            foreach ($userArray as $userAcc) { ?>
-                <li><a href="?page=community&id=<?php echo $userAcc['id'] ?>">
-                        <i class="edit-icon"></i>
-                        <p>Username: <?php echo $userAcc['username'] ?></p>
-                        <p>Email: <?php echo $userAcc['email'] ?></p>
-                    </a></li>
-            <?php }; ?>
+    <?php
+    if ($userArray)
+        foreach ($userArray as $userAcc) { ?>
+            <li>
+                <a href="?page=community&id=<?php echo $userAcc['id'] ?>">
+                    <h3>Username: <?php echo $userAcc['username'] ?></h3>
+                    <i class="edit-icon"></i>
+                    <p>Email: <?php echo $userAcc['email'] ?></p>
+                </a>
+                <a href="#" onclick='showConfirm(<?php echo $userAcc['id'] ?>)'>Delete
+                    <i class="trash-icon"></i></a>
+            </li>
+        <?php }; ?>
     </ul>
 </div>

@@ -6,7 +6,7 @@ if(isset($_SESSION['username'])){
     header("Location: index.php");
 }
 
-if($_POST){
+if($_SERVER["REQUEST_METHOD"] == "POST"){
     $adminPageController = new Admin\PageController();
     if(!$adminPageController->SetAdminUser($_POST['username'],$_POST['password']))
         $message = 'Invalid data passed';
@@ -28,8 +28,7 @@ if($_POST){
     <section id="content">
         <h1>LOGIN</h1>
 
-        <form name="login_form" id="login_form" action="admin_login.php"
-              method="POST" role="form">
+        <form method="POST" name="login_form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) ?>" role="form">
 
             <!-- USERNAME -->
             <p>

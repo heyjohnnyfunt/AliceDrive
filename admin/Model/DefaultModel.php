@@ -11,10 +11,15 @@ namespace Admin;
 class DefaultModel extends BaseModel
 {
     // Gets menu from "pages" Database
-    function GetMenuFromDatabase()
+    function GetMenu()
     {
-        $sql = "SELECT title, slug, id FROM pages";
-        $this->_setSql($sql);
+        $sql = "SELECT
+                    title,
+                    slug,
+                    id
+                FROM
+                    pages";
+        $this->setSql($sql);
         return $this->getAll();
     }
 }

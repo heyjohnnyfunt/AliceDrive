@@ -53,26 +53,6 @@ namespace Admin {
             return $message;
         }
 
-        // Gets menu from "pages" Database
-        function GetUsernamesFromDatabase()
-        {
-            $sql = "SELECT
-                      id, username, email
-                    FROM
-                      users";
-
-            $result = $this->_db->query($sql);
-            $titleArray = array();
-
-            if ($result->num_rows > 0)
-                while ($data = $result->fetch_array()) {
-                    array_push($titleArray, $data);
-                }
-            else $titleArray = 'Error';
-
-            return $titleArray;
-        }
-
         public function getRowByParam($cond)
         {
             $sql = "SELECT
@@ -82,8 +62,20 @@ namespace Admin {
                   WHERE
                     $cond";
 
-            $this->_setSql($sql);
+            $this->setSql($sql);
             return parent::getRow();
+        }
+
+        // Gets menu from "users" Database
+        function GetMenu()
+        {
+            $sql = "SELECT
+                      id, username, email
+                    FROM
+                      users";
+
+            $this->setSql($sql);
+            return $this->getAll();
         }
     }
 }

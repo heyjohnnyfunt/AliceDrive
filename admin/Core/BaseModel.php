@@ -25,11 +25,11 @@ namespace Admin {
             }
         }
 
-        protected function get_data() { }
+        protected function GetMenu() { }
 
         protected function InsertUpdate($id) {}
 
-        protected function _setSql($sql)
+        protected function setSql($sql)
         {
             $this->_sql = $sql;
         }
@@ -52,23 +52,39 @@ namespace Admin {
             return $contentArray;
         }
 
+        function Delete($table, $id)
+        {
+            $sql = "DELETE FROM $table WHERE id = $id";
+            $this->setSql($sql);
+            return $this->_db->query($this->_sql);
+        }
+
         public function getRow()
         {
             if (!$this->_sql) {
                 throw new Exception("No SQL query!");
             }
-            $data = $this->FetchDataByQuery();
+            $data = $this->fetchDataByQuery();
             return $data;
         }
 
         //Template function to get data
-        function FetchDataByQuery()
+        function fetchDataByQuery()
         {
             $result = $this->_db->query($this->_sql);
 
             if ($result->num_rows > 0)
                 $data = $result->fetch_assoc();
             else $data = 'Error';
+            return $data;
+        }
+
+        function transform_input($data)
+        {
+            $data = trim($data);
+            $data = strip_tags($data);
+            $data = stripslashes($data);
+            $data = htmlspecialchars($data);
             return $data;
         }
     }

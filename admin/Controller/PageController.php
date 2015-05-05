@@ -13,7 +13,6 @@ namespace Admin {
 
     class PageController
     {
-
         function GetAllAdminUsers()
         {
             $adminPageModel = new PageModel();
@@ -29,8 +28,13 @@ namespace Admin {
         function SetAdminUser($username, $password)
         {
             $adminPageModel = new PageModel();
+
+            if(!empty($username)) $username = $this->test_input($username);
+
+            if (!empty($password)) $password = $this->test_input($password);
+
             if ($adminPageModel->CheckAdminInDatabase($username, $password)) {
-                $_SESSION['username'] = $_POST['username'];
+                $_SESSION['username'] = $username;
                 header('Location: index.php');
                 return true;
             } else return false;
@@ -66,6 +70,11 @@ namespace Admin {
                 $result .= ">$user[username]</option>";
             }
             return $result;
+        }
+
+        function test_input($data)
+        {
+            return htmlspecialchars(stripslashes(trim($data)));
         }
     }
 }

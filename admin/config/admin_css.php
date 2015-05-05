@@ -8,8 +8,7 @@
 <link rel="stylesheet" type="text/css" href="/Styles/AdminHeader.css">
 <link rel="stylesheet" type="text/css" href="/Styles/CommonStyle.css">
 <link rel="stylesheet" type="text/css" href="/Styles/debug.css">
-<link rel="stylesheet" type="text/css" href="/Styles/Header.css">
 <link rel="stylesheet" type="text/css" href="/Styles/MainEditor.css">
 <link rel="stylesheet" type="text/css" href="/Styles/Navigation.css">
-<link rel="stylesheet" type="text/css" href="/Styles/Resp_medium.css" media="screen and (max-width: 1150px)">
-<link rel="stylesheet" type="text/css" href="/Styles/Resp_min.css" media="screen and (max-width: 850px)">
+<link rel="stylesheet" type="text/css" href="/Styles/Responsive/Resp_medium.css" media="screen and (max-width: 1150px)">
+<link rel="stylesheet" type="text/css" href="/Styles/Responsive/Resp_min.css" media="screen and (max-width: 850px)">

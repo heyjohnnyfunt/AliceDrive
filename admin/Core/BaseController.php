@@ -13,15 +13,18 @@ namespace Admin {
         public $view;
         public $user;
         protected $controller;
-        protected $modelBaseName;
+        protected $viewFileName;
 
-        public function __construct($model, $username)
+        public function __construct($controller, $username)
         {
-            $this->controller = ucwords(__CLASS__);
-            $this->modelBaseName = $model;
+            $this->controller = $controller;
+            $this->viewFileName = $controller . 'View.php';
             $this->user = $username;
 
-            $this->view = new BaseView(ADMIN_PATH . ADMIN_VIEW . $this->modelBaseName . '.php');
+            $modelName = __NAMESPACE__ . DS .ucwords($this->controller) . 'Model';
+            $this->model = new $modelName();
+
+            $this->view = new BaseView(ADMIN_PATH . ADMIN_VIEW . $this->viewFileName);
         }
 
         function index() {}

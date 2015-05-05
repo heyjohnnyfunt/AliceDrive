@@ -6,6 +6,4 @@
 
     <?php include('navigation.php') ?>
 
-    <!-- TODO: do not forget about this -->
-    <a href="/admin" class="button">Admin</a>
 </header>

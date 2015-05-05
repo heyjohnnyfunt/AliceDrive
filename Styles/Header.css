@@ -1,6 +1,10 @@
+body{
+    background: url("../Images/band3.png") no-repeat fixed;
+    background-size: cover;
+}
+
 #header{
-    background: #000000;/*373855*/
-    /* clear: both;*/
+    background: #000000;
     width: 100%;
 }
 
