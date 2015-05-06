@@ -12,7 +12,7 @@
 
     <ul class="left-bar-menu">
         <?php
-        if ($newsTopics)    /*count($newsTopics) > 0*/
+        if ($newsTopics)
             foreach ($newsTopics as $topic) { ?>
                 <li>
                     <a title="Click to edit" href="?page=news&id=<?php echo $topic['id'] ?>">
@@ -20,7 +20,8 @@
                         <i class="edit-icon"></i>
                         <p>Post date: <?php echo $topic['date'] ?></p>
                     </a>
-                    <a id="del_<?php echo $topic['id'] ?>" href="#" onclick='showConfirm(<?php echo $topic['id'] ?>)'>Delete
+                    <a href="#" onclick='showConfirm(<?php echo $topic['id'] ?>)'>
+                        Delete
                         <i class="trash-icon"></i></a>
                 </li>
             <?php }; ?>

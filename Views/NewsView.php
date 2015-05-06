@@ -1,4 +1,4 @@
-<h1>News</h1>
+<div class="content">
 <?php
 if ($articles) {
     foreach ($articles as $topic) { ?>
@@ -24,3 +24,4 @@ if ($articles) {
     <p>We currently do not have any articles.</p>
 
 <?php } ?>
+</div>

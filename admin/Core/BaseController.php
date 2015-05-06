@@ -25,6 +25,8 @@ namespace Admin {
             $this->model = new $modelName();
 
             $this->view = new BaseView(ADMIN_PATH . ADMIN_VIEW . $this->viewFileName);
+
+            $this->view->set("header", ucwords($this->controller) . " Editor");
         }
 
         function index() {}

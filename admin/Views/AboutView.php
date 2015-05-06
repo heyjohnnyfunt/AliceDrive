@@ -1,4 +1,7 @@
-<div>
-    <h1>About Editor</h1>
-    <p>Band stuff is not editable yet.</p>
+<div class="dashboard">
+
+    <?php include('AboutView/leftBar.php') ?>
+
+    <?php include('AboutView/rightBar.php') ?>
+
 </div>

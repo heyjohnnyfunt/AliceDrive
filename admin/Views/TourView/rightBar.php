@@ -8,7 +8,7 @@
         <div>
             <label for="place">Place:
                 <input class="input" type="text" name="place"
-                       placeholder="Tour place"
+                       placeholder="Tour place" required
                        value="<?php if (isset($_GET['id'])) echo $tourItem['place']; ?>">
             </label>
         </div>
@@ -16,7 +16,7 @@
         <div>
             <label for="date_time">Time & date:
                 <input class="input" type="text" name="date_time"
-                       placeholder="Format: hh:mm DD.MM.YYYY"
+                       placeholder="Format: hh:mm DD.MM.YYYY" required
                        value="<?php if (isset($_GET['id'])) echo $tourItem['date_time']; ?>">
             </label>
         </div>

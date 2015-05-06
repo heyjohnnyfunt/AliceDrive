@@ -1,19 +1,5 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: skogs
- * Date: 26.04.2015
- * Time: 1:17
- */
-
-?>
-
-<div>
-    <h1>Admin Dashboard</h1>
-    <p>Choose section to edit from above or below :)</p>
-</div>
-
 <div class="dashboard">
+    <p>Choose section to edit from above or below :)</p>
 
     <ul class="left-bar-menu">
         <?php

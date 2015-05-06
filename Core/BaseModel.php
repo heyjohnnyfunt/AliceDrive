@@ -27,7 +27,7 @@ namespace MainWebSite {
 
         public function get_data() { }
 
-        protected function _setSql($sql)
+        protected function setSql($sql)
         {
             $this->_sql = $sql;
         }

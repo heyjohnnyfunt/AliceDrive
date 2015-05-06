@@ -1,12 +1,12 @@
 <div class="left-col">
-    <h1>Концерты</h1>
     <?php
     if ($articles > 0) {
         foreach ($articles as $topic) { ?>
-            <a class="article" href="/tours/concert/<?php echo $topic['id']; ?>">
+            <a class="tourArticle" href="/tours/concert/<?php echo $topic['id']; ?>">
                 <article>
                     <header>
                         <h3><?php echo $topic['place']; ?></h3>
+
                         <p>Когда:
                             <time><?php echo $topic['date']; ?></time>
                         </p>
@@ -14,7 +14,6 @@
                     <!--<p><?php /*echo $a['intro']; */ ?></p>-->
 
                     <p>More...</p>
-                    <hr/>
                 </article>
             </a>
         <?php
@@ -26,6 +25,7 @@
 
     <?php } ?>
 </div>
+
 <div class="right-col">
     <?php
     if ($lastConcert) { ?>

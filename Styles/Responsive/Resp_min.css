@@ -45,6 +45,30 @@
 
 /* CONTENT stylesheet*/
 
+.content{
+    padding: 0 5%;
+}
+
+
+.left-col{
+    width: 80%;
+    padding: 0 5%;
+}
+.right-col{
+    display: none;
+}
+
+
+.article article{
+    display: block;
+    max-width: 100%;
+}
+
+/* EDITOR */
+.dashboard{
+    padding: 15px 0;
+}
+
 .left-bar {
     width: 100%;
 }
@@ -57,18 +81,6 @@
     padding: 5px 0;
 }
 
-.left-col{
-    width: 100%;
-}
-.right-col{
-    display: none;
-}
-
 .delete-button{
     float: none;
-}
-
-.article article{
-    display: block;
-    max-width: 100%;
 }

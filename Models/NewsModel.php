@@ -20,7 +20,7 @@ namespace MainWebSite {
                     news
                 ORDER BY post_date DESC";
 
-            $this->_setSql($sql);
+            $this->setSql($sql);
             $articles = $this->getAll();
 
             if (empty($articles)) {
@@ -43,7 +43,7 @@ namespace MainWebSite {
                 WHERE
                     id = $id";
 
-            $this->_setSql($sql);
+            $this->setSql($sql);
             $articleDetails = $this->getRow();
 
             if (empty($articleDetails)) {

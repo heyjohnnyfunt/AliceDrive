@@ -18,7 +18,7 @@ namespace MainWebSite {
                     tours
                 ORDER BY date_time DESC";
 
-            $this->_setSql($sql);
+            $this->setSql($sql);
             $articles = $this->getAll();
 
             if (empty($articles)) {
@@ -40,7 +40,7 @@ namespace MainWebSite {
                 WHERE
                     id = $id";
 
-            $this->_setSql($sql);
+            $this->setSql($sql);
             $articleDetails = $this->getRow();
 
             if (empty($articleDetails)) {
@@ -62,7 +62,7 @@ namespace MainWebSite {
                 ORDER BY date_time DESC
                 LIMIT 1";
 
-            $this->_setSql($sql);
+            $this->setSql($sql);
             $lastRow = $this->getRow();
 
             if (empty($lastRow)) {

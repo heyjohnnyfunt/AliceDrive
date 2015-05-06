@@ -22,6 +22,7 @@ class NewsController extends BaseController
         try {
             $newsTopics = $this->GetTopics();
             $this->view->set('newsTopics', $newsTopics);
+
             $this->view->set('page_title', 'News');
             $this->view->set('site_title', 'Alice Drive');
             $this->view->set('currentUser', $this->user);

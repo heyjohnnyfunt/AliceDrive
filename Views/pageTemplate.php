@@ -13,8 +13,8 @@
 
     <?php include(D_VIEW . "header.php"); ?>
 
-    <section id="content">
-
+    <section >
+        <h1 class="content"><?php echo $header; ?></h1>
         <?php include BASE_PATH . D_VIEW . $contentView; ?>
 
         <!--<h3><?php /*echo $pageData['title']*/ ?></h3>

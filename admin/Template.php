@@ -14,6 +14,10 @@
 
     <section id="content">
 
+        <div>
+            <h1 class="content"><?php echo $header; ?></h1>
+        </div>
+
         <?php include(ADMIN_PATH . ADMIN_VIEW . $contentView);?>
 
     </section>

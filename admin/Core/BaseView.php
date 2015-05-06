@@ -37,8 +37,6 @@ namespace Admin {
             extract($this->data);
             ob_start();
 
-            #include($this->file);
-
             $output = ob_get_contents();
             ob_end_clean();
 

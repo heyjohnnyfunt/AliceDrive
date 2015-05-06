@@ -22,6 +22,8 @@ class DefaultController extends BaseController
         try {
             $menu = $this->model->GetMenu();
             $this->view->set('menuArray', $menu);
+
+            $this->view->set('header', 'Admin Dashboard');
             $this->view->set('page_title', 'Admin');
             $this->view->set('site_title', 'Alice Drive');
             $this->view->set('currentUser', $this->user);
