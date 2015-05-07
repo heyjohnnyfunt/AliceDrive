@@ -1,0 +1,20 @@
+.cd-intro{
+    color: white;
+    text-align: center;
+    padding-top: 30%;
+}
+
+.cd-scrolling-bg {
+    min-height: 100%;
+}
+.cd-fixed-bg{
+    min-height: 100% !important;
+    background-size: cover !important;
+    background-attachment: fixed !important;
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+}
+.cd-fixed-bg.cd-bg-1 {
+    background-image: url("../Images/Band/alicedrive.jpg");
+    padding-top: 30%;
+}

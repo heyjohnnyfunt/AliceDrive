@@ -43,9 +43,9 @@ namespace Admin {
             $result = $this->_db->query($sql);
 
             if ($result) {
-                $message = '<p>User account was ' . $action . '.</p>';
+                $message = '<p class="error">User account was ' . $action . '.</p>';
             } else {
-                $message = '<p>User account could not be ' . $action . ' because: ' .
+                $message = '<p class="error">User account could not be ' . $action . ' because: ' .
                     $this->_db->error . '</p>';
                 $message .= '<p>' . $sql . '</p>';
             }

@@ -55,9 +55,10 @@ namespace Admin {
             return $adminPageModel->GetDataFromDatabase($sql);
         }
 
-        function CreateUsersOptionValues(array $users, $pageCreatorId, $currentUser)
+        function CreateUsersOptionValues($pageCreatorId, $currentUser)
         {
             $result = "";
+            $users = $this->GetAllAdminUsers();
             foreach ($users as $user) {
                 $result .= "<option value='$user[id]'";
 

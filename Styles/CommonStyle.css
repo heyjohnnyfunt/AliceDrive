@@ -32,41 +32,6 @@ footer{
     position: absolute;
 }
 
-h1{
-    margin: 20px 0 0 0;
-    color: #FFFFFF;
-    background: #ff0000;
-}
-
-h3{
-    margin: 0;
-}
-
-p{
-    padding: 2px;
-    font-size: 20px;
-}
-
-.bigTitle{
-    font-size: 45px;
-    font-family:  Quicksand, Arial, sans-serif;
-}
-
-.bigDescription{
-    background-color: rgba(37, 38, 55, 0.80);
-    color: white;
-    padding: 2% 15%;
-    text-align: justify;
-}
-
-.error{
-    font-size: 22px;
-    font-weight: bold;
-    color: red;
-    padding: 5px 0;
-    margin: 0;
-}
-
 .formButton{
     display: inline;
 }
@@ -131,36 +96,4 @@ p{
     vertical-align: top;
     color: #FFFFFF;
     background: #373855;
-}
-
-.article, .tourArticle{
-    text-decoration: none;
-    color: #FFFFFF;
-}
-
-.article article{
-    padding: 10px;
-    margin: 10px 5px 0 0;
-    display: inline-block;
-    vertical-align: top;
-    max-width: 44%;
-    background-color: rgba(37, 38, 55, 0.80);
-    transition: all 0.25s ease-in-out;
-}
-
-.article article:hover, .tourArticle article:hover{
-    color: #373855;
-    background: #FFFFFF;
-    opacity: 1;
-    transition: all 0.25s ease-in-out;
-}
-
-.tourArticle article{
-    padding: 10px;
-    margin: 10px 5px 0 0;
-    display: inline-block;
-    vertical-align: top;
-    width: 100%;
-    background-color: rgba(37, 38, 55, 0.80);
-    transition: all 0.25s ease-in-out;
 }

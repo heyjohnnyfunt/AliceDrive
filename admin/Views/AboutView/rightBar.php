@@ -33,6 +33,14 @@
         </div>
 
         <div>
+            <label for="image">Image:
+                <select class="input" name="image" id="image">
+                    <?php echo $imageList?>
+                </select>
+            </label>
+        </div>
+
+        <div>
             <label for="body">Body:
                  <textarea class="editor" name="body" id="body" rows="8"
                            placeholder="Page body"><?php if (isset($_GET['id'])) echo $member['body']; ?>
@@ -41,6 +49,5 @@
         </div>
 
         <input type="submit" class="button" value="Save" name="SaveButtonClick">
-
     </form>
 </div>

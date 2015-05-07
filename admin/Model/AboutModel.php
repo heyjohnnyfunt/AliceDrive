@@ -14,9 +14,11 @@ class AboutModel extends BaseModel
     function InsertUpdate($id = null)
     {
         $name = $this->_db->real_escape_string($this->transform_input($_POST['memberName']));
-        if (empty($name)) return $message = "Member's name can not be empty";
         $instrument = $this->_db->real_escape_string($this->transform_input($_POST['instrument']));
-        $body = $this->_db->real_escape_string(($_POST['body']));
+        $image = $this->_db->real_escape_string($this->transform_input($_POST['image']));
+        $body = $this->_db->real_escape_string($this->transform_input($_POST['body']));
+
+        if (empty($name)) return $message = "Member's name can not be empty";
 
         if ($id != null)
         {
@@ -25,6 +27,7 @@ class AboutModel extends BaseModel
                     SET
                         name = '$name',
                         instrument = '$instrument',
+                        image = '$image',
                         body = '$body'
                     WHERE
                         id=$id";
@@ -33,9 +36,9 @@ class AboutModel extends BaseModel
         } else {
 
             $sql = "INSERT INTO
-                        about (name, instrument, body)
+                        about (name, instrument, image, body)
                     VALUES
-                        ('$name','$instrument','$body')";
+                        ('$name','$instrument','$image','$body')";
 
             $action = 'added';
         }
@@ -43,9 +46,9 @@ class AboutModel extends BaseModel
         $result = $this->_db->query($sql);
 
         if ($result) {
-            $message = '<p>Member record was ' . $action . '.</p>';
+            $message = '<p class="error">Member record was ' . $action . '.</p>';
         } else {
-            $message = '<p>Member record could not be ' . $action . ' because: ' .
+            $message = '<p class="error">Member record could not be ' . $action . ' because: ' .
                 $this->_db->error . '</p>';
             $message .= '<p>' . $sql . '</p>';
         }

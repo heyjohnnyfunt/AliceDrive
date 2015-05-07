@@ -14,8 +14,10 @@ class AboutModel extends BaseModel
     public function get_data()
     {
         $sql = "SELECT
+                id,
                 name,
                 instrument,
+                image,
                 body
             FROM
                 about
@@ -35,6 +37,7 @@ class AboutModel extends BaseModel
     public function get_main_description()
     {
         $sql = "SELECT
+                image,
                 body
             FROM
                 about

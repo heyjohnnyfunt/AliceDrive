@@ -15,10 +15,9 @@
 
         <div>
             <label for="user">User:
-                <select class="input" name="user" id="title">
+                <select class="input" name="user" id="user">
                     <?php
-                    $users = $pageController->GetAllAdminUsers();
-                    echo $pageController->CreateUsersOptionValues($users, $newsItem['user_id'], $currentUser['id']);
+                    echo $pageController->CreateUsersOptionValues($newsItem['user_id'], $currentUser['id']);
                     ?>
                 </select>
             </label>

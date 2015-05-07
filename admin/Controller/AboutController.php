@@ -20,8 +20,9 @@ class AboutController extends BaseController {
     public function index()
     {
         try {
-            $memberList = $this->GetMember();
+            $memberList = $this->GetMemberList();
             $this->view->set('memberList', $memberList);
+
             $this->view->set('page_title', 'About');
             $this->view->set('site_title', 'Alice Drive');
             $this->view->set('currentUser', $this->user);
@@ -29,6 +30,13 @@ class AboutController extends BaseController {
             if (isset($_GET['id'])) {
                 $member = $this->GetPageData('id', $_GET['id']);
                 $this->view->set('member', $member);
+
+                $imageList = $this->GetImageList($member);
+                $this->view->set('imageList', $imageList);
+            }
+            else{
+                $imageList = $this->GetImageList();
+                $this->view->set('imageList', $imageList);
             }
 
             if (isset($_GET['delete'])) {
@@ -62,9 +70,47 @@ class AboutController extends BaseController {
         return $this->model->Delete("about", $id);
     }
 
-    function GetMember()
+    function GetMemberList()
     {
         return $this->model->GetMenu();
+    }
+
+    function GetImageList($member = null)
+    {
+        //Select folder to scan
+        $handle = opendir(IMAGES . "Band");
+
+        //Read all files and store names in array
+        while ($image = readdir($handle)) {
+            $images[] = $image;
+        }
+
+        closedir($handle);
+
+        //Exclude all filenames where filename length < 3
+        $imageArray = array();
+        foreach ($images as $image) {
+            if (strlen($image) > 2) {
+                array_push($imageArray, $image);
+            }
+        }
+
+        //Create <select><option> Values and return result
+        $result = $this->CreateOptionValues($imageArray, $member);
+        return $result;
+    }
+
+    function CreateOptionValues(array $valueArray, $member = null) {
+        $result = "";
+
+        foreach ($valueArray as $value) {
+            $result .= "<option value='$value'";
+            if ($member['image'] == $value)
+                $result.=" selected";
+            $result .= ">$value</option>";
+        }
+
+        return $result;
     }
 
     function GetPageData($param, $value)

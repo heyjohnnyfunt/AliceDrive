@@ -21,7 +21,7 @@ namespace Admin {
             $this->viewFileName = $controller . 'View.php';
             $this->user = $username;
 
-            $modelName = __NAMESPACE__ . DS .ucwords($this->controller) . 'Model';
+            $modelName = __NAMESPACE__ . DS . ucwords($this->controller) . 'Model';
             $this->model = new $modelName();
 
             $this->view = new BaseView(ADMIN_PATH . ADMIN_VIEW . $this->viewFileName);
@@ -31,5 +31,23 @@ namespace Admin {
 
         function index() {}
 
+        function uploadImage($path)
+        {
+            $fileType = $_FILES["file"]["type"];
+
+            if (($fileType == "image/gif")  ||
+                ($fileType == "image/jpeg") ||
+                ($fileType == "image/jpg")  ||
+                ($fileType == "image/png"))
+            {
+                //Check if file exists
+                if (file_exists(IMAGES . $path . $_FILES["file"]["name"])) {
+                    echo "File already exists";
+                } else {
+                    move_uploaded_file($_FILES["file"]["tmp_name"], IMAGES . $path . DS . $_FILES["file"]["name"]);
+                    echo "Uploaded in " . IMAGES . $path . $_FILES["file"]["name"];
+                }
+            }
+        }
     }
 }

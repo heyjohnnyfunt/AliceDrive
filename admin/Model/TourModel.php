@@ -43,9 +43,9 @@ class TourModel extends BaseModel
         $result = $this->_db->query($sql);
 
         if ($result) {
-            $message = '<p>Tour was ' . $action . '.</p>';
+            $message = '<p class="error">Tour was ' . $action . '.</p>';
         } else {
-            $message = '<p>Tour could not be ' . $action . ' because: ' .
+            $message = '<p class="error">Tour could not be ' . $action . ' because: ' .
                 $this->_db->error . '</p>';
             $message .= '<p>' . $sql . '</p>';
         }

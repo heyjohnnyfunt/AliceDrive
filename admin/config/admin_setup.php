@@ -8,6 +8,7 @@ namespace Admin {
 # Constants:
 // Root project path
     DEFINE('ADMIN_PATH', dirname(realpath(__DIR__)) . '/');
+    DEFINE('IMAGES', dirname(dirname(__DIR__)) . "/Images/");
     DEFINE('DS', DIRECTORY_SEPARATOR);
     DEFINE('ADMIN_MODEL', 'Model/');
     DEFINE('ADMIN_VIEW', 'Views/');

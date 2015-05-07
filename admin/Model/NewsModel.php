@@ -46,11 +46,11 @@ namespace Admin {
             $result = $this->_db->query($sql);
 
             if ($result) {
-                $message = '<p>Topic was ' . $action . '.</p>';
+                $message = '<p class="error">Topic was ' . $action . '.</p>';
             } else {
-                $message = '<p>Topic could not be ' . $action . ' because: ' .
+                $message = '<p class="error">Topic could not be ' . $action . ' because: ' .
                     $this->_db->error . '</p>';
-                $message .= '<p>' . $sql . '</p>';
+                $message .= '<p class="error">' . $sql . '</p>';
             }
 
             return $message;
