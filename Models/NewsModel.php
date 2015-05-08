@@ -33,9 +33,7 @@ namespace MainWebSite {
         public function getArticleById($id)
         {
             $sql = "SELECT
-                    id,
                     title,
-                    slug,
                     DATE_FORMAT(post_date, '%d.%m.%Y') as date,
                     body
                 FROM
@@ -46,9 +44,10 @@ namespace MainWebSite {
             $this->setSql($sql);
             $articleDetails = $this->getRow();
 
-            if (empty($articleDetails)) {
+            if ($articleDetails == 'Error') {
                 return false;
             }
+            print_r($articleDetails);
 
             return $articleDetails;
         }

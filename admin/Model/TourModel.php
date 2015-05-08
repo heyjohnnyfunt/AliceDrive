@@ -14,7 +14,7 @@ class TourModel extends BaseModel
     {
         $place = $this->_db->real_escape_string($this->transform_input($_POST['place']));
         $date_time = $this->_db->real_escape_string($this->transform_input($_POST['date_time']));
-        $body = $this->_db->real_escape_string(htmlspecialchars($_POST['body']));
+        $body = $this->_db->real_escape_string(($_POST['body']));
 
         $date_time = date("Y-m-d H:i", strtotime($date_time));
 

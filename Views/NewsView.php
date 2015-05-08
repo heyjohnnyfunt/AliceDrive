@@ -2,12 +2,12 @@
 <?php
 if ($articles) {
     foreach ($articles as $topic) { ?>
-        <a class="article" href="/news/topic/<?php echo $topic['slug']; ?>">
+        <a class="article" href="/news/topic/<?php echo $topic['id']; ?>">
             <article>
                 <header>
                     <h3><?php echo $topic['title']; ?></h3>
 
-                    <p>Published on:
+                    <p>Новость от
                         <time><?php echo $topic['date']; ?></time>
                     </p>
                 </header>

@@ -17,6 +17,7 @@ namespace MainWebSite{
         public function __construct()
         {
             $url = explode('/', $_SERVER['REQUEST_URI']);
+            unset($url[0]);
 
             if (file_exists(BASE_PATH . D_CONTROLLER . $url[1] . 'Controller' . '.php')) {
                 $this->controller = $url[1];

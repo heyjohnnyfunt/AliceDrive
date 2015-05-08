@@ -41,18 +41,25 @@ namespace MainWebSite {
         {
             try {
 
-                $article = $this->model->getArticleById((int)$articleId);
+                $article = $this->model->getArticleById($articleId);
 
                 if ($article)
                 {
-                    $this->view->set('title', $article['title']);
-                    $this->view->set('articleBody', $article['article']);
-                    $this->view->set('datePublished', $article['date']);
+                    $this->view->set('page_title', $article['title']);
+                    $this->view->set('site_title', 'Alice Drive');
+
+                    $this->view->set('header', $article['title']);
+                    $this->view->set('date', $article['date']);
+                    $this->view->set('body', $article['body']);
                 }
                 else
                 {
-                    $this->view->set('title', 'Invalid article ID');
-                    $this->view->set('noArticle', true);
+                    $this->view->set('page_title', 'News');
+                    $this->view->set('site_title', 'Alice Drive');
+                    $this->view->set('date', '12.12.12');
+                    $this->view->set('header', 'Мысли успешных людей');
+                    $this->view->set('body', 'Не все могут прочесть эту новость.
+                    Точнее, не только лишь все. Не каждый может это сделать..');
                 }
 
                 return $this->view->output('TopicView.php', 'pageTemplate.php');

@@ -1,7 +1,9 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: skogs
- * Date: 08.05.2015
- * Time: 1:23
- */
+<div class="bigDescription">
+    <article>
+        <header>
+            <p><time><?php echo $date; ?></time>
+            </p>
+        </header>
+        <?php echo $body; ?>
+    </article>
+</div>
