@@ -25,7 +25,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 <div id="wrapper">
 
-    <section id="content">
+    <section id="content" class="content">
         <h1>LOGIN</h1>
 
         <form method="POST" name="login_form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) ?>" role="form">

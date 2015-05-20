@@ -3,7 +3,7 @@
 
     <?php if (isset($message)) echo $message; ?>
 
-    <form action="index.php?page=about<?php if (isset($_GET['id'])) echo '&id=' . $songItem['id']; ?>"
+    <form action="index.php?page=music<?php if (isset($_GET['id'])) echo '&id=' . $songItem['id']; ?>"
           method="post" role="form" id="main-form">
 
         <div>

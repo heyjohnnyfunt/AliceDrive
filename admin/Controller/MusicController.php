@@ -29,16 +29,16 @@ class MusicController extends BaseController
 
             if (isset($_GET['delete'])){
                 if($this->DeleteSong($_GET['delete']))
-                    $this->view->set('message', 'User was deleted');
+                    $this->view->set('message', 'Song was deleted');
                 else
                     $this->view->set('message', 'Error while deleting.');
             }
 
             if (isset($_POST['SaveButtonClick'])) {
                 if(isset($_GET['id']))
-                    $this->view->set('message',  $this->InsertSong($_GET['id']));
+                    $this->view->set('message', $this->InsertSong($_GET['id']));
                 else
-                    $this->view->set('message',  $this->InsertSong());
+                    $this->view->set('message', $this->InsertSong());
             }
 
             $this->view->output($this->viewFileName);
@@ -49,7 +49,7 @@ class MusicController extends BaseController
     }
     function DeleteSong($id)
     {
-        return $this->model->Delete("users", $id);
+        return $this->model->Delete("music", $id);
     }
 
     function InsertSong($id = null)

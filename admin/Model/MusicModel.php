@@ -8,8 +8,8 @@
 
 namespace Admin;
 
-
-class MusicModel extends BaseModel {
+class MusicModel extends BaseModel
+{
     function InsertUpdate($id = null)
     {
         $name = $this->_db->real_escape_string($this->transform_input($_POST['songName']));
