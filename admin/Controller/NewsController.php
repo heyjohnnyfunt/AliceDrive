@@ -68,9 +68,4 @@ class NewsController extends BaseController
         return $this->model->GetMenu();
     }
 
-    function GetPageData($param, $value)
-    {
-        $cond = "$param = $value";
-        return $this->model->getRowByParam($cond);
-    }
 }

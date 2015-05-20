@@ -112,10 +112,4 @@ class AboutController extends BaseController {
 
         return $result;
     }
-
-    function GetPageData($param, $value)
-    {
-        $cond = "$param = $value";
-        return $this->model->getRowByParam($cond);
-    }
 }

@@ -11,7 +11,7 @@ $debug = $pageController->GetDebugValue();
 
 if ($debug == 1) { ?>
     <button id="debug-button">Debug</button>
-<?php } ?>
+<?php }?>
 
 <div id="debug-console">
     <!--<h1>Path Array</h1>

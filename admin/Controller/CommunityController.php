@@ -28,7 +28,7 @@ namespace Admin {
 
                 if (isset($_GET['id']))
                 {
-                    $userItem = $this->GetUser('id', $_GET['id']);
+                    $userItem = $this->GetPageData('id', $_GET['id']);
                     $this->view->set('userItem', $userItem);
                 }
 
@@ -55,7 +55,7 @@ namespace Admin {
 
         function DeleteUser($id)
         {
-            return $this->model->Delete("users", $id);
+            return $this->model->Delete("music", $id);
         }
 
         function InsertUser($id = null)
@@ -68,10 +68,5 @@ namespace Admin {
             return $this->model->GetMenu();
         }
 
-        function GetUser($param, $value)
-        {
-            $cond = "$param = $value";
-            return $this->model->getRowByParam($cond);
-        }
     }
 }

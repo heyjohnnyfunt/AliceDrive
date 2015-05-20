@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="2355236856">
+  <component name="DataSourceManagerImpl" format="xml" hash="4118626032">
     <data-source source="LOCAL" name="alicedrive@localhost" uuid="0841936d-d816-43ec-9afa-c344501da6e5">
       <driver-ref>mysql</driver-ref>
       <auto-commit>false</auto-commit>

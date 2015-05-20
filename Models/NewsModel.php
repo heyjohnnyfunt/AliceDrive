@@ -47,7 +47,6 @@ namespace MainWebSite {
             if ($articleDetails == 'Error') {
                 return false;
             }
-            print_r($articleDetails);
 
             return $articleDetails;
         }

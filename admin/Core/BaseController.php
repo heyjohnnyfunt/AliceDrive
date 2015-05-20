@@ -49,5 +49,11 @@ namespace Admin {
                 }
             }
         }
+
+        function GetPageData($param, $value)
+        {
+            $cond = "$param = $value";
+            return $this->model->getRowByParam($cond);
+        }
     }
 }
