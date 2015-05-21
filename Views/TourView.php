@@ -2,7 +2,7 @@
     <?php
     if ($articles > 0) {
         foreach ($articles as $topic) { ?>
-            <a class="tourArticle">
+            <div class="article tourArticle">
                 <article>
                     <header>
                         <h3>Где: <?php echo $topic['place']; ?></h3>
@@ -14,7 +14,7 @@
                     <?php echo $topic['body'];  ?>
 
                 </article>
-            </a>
+            </div>
         <?php
         }
     } else { ?>
@@ -28,6 +28,7 @@
 <div class="right-col">
     <?php
     if ($lastConcert) { ?>
+
         <h1>Ближайший</h1>
         <h3><?php echo $lastConcert['place']; ?></h3>
 

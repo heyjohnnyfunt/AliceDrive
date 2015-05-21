@@ -14,3 +14,12 @@ $(document).ready(function(){
         });
     });
 });
+
+$(window).scroll(function() {
+    if ($(window).scrollTop() > $('#header').height() + 20) {
+        $('.right-col').addClass('right-col-stuck');
+    } else {
+        $('.right-col').removeClass('right-col-stuck');
+    }
+
+});

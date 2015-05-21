@@ -49,7 +49,6 @@
     padding: 0 5%;
 }
 
-
 .left-col{
     width: 80%;
     padding: 0 5%;
@@ -58,12 +57,13 @@
     display: none;
 }
 
-
-.article article{
+.article{
     display: block;
-    max-width: 100%;
+    width: 100%;
 }
-
+.article article:hover{
+    transform: scale(1.0);
+}
 /* EDITOR */
 .dashboard{
     padding: 15px 0;

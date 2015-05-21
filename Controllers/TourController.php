@@ -25,7 +25,7 @@ namespace MainWebSite {
                 $this->view->set('articles', $articles);
                 $this->view->set('lastConcert', $lastConcert);
 
-                $this->view->set('header', 'Концерты');
+                $this->view->set('header', 'Где нас можно услышать');
                 $this->view->set('page_title', 'Tours');
                 $this->view->set('site_title', 'Alice Drive');
 

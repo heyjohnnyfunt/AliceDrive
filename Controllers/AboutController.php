@@ -26,7 +26,7 @@ class AboutController extends BaseController {
             $mainDesc = $this->model->get_main_description();
             $this->view->set('mainDesc',$mainDesc);
 
-            $this->view->set('header', 'ALICE DRIVE');
+            $this->view->set('header', 'Кто такие');
             $this->view->set('page_title', 'About');
             $this->view->set('site_title', 'Alice Drive');
 

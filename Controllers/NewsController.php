@@ -26,7 +26,7 @@ namespace MainWebSite {
                 $articles = $this->model->get_data();
                 $this->view->set('articles', $articles);
 
-                $this->view->set('header', 'Новости');
+                $this->view->set('header', 'Что у нас нового');
                 $this->view->set('page_title', 'News');
                 $this->view->set('site_title', 'Alice Drive');
 

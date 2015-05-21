@@ -92,12 +92,18 @@ footer{
 
 .right-col {
     display: inline-block;
+    position: relative;
     width: 27%;
     padding: 10px 12px;
     margin-top: 10px;
     vertical-align: top;
     color: #FFFFFF;
     background: #373855;
+}
+.right-col-stuck{
+    position:fixed;
+    z-index:100;
+    top:0;
 }
 
 #footer{

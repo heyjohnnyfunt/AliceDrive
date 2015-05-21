@@ -1,4 +1,3 @@
-
 <div class="right-bar">
 
     <?php if (isset($message)) echo $message; ?>
@@ -20,7 +19,6 @@
                        value="<?php if (isset($_GET['id'])) echo $songItem['source']; ?>" required>
             </label>
         </div>
-
 
         <input type="submit" class="button" value="Save" name="SaveButtonClick">
     </form>
