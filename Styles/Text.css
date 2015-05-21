@@ -1,32 +1,31 @@
-
-h1{
+h1 {
     margin: 5px 0 0 0;
     color: #FFFFFF;
     background: #ff0000;
 }
 
-h3{
+h3 {
     margin: 0;
 }
 
-p{
+p {
     padding: 2px;
     font-size: 20px;
 }
 
-.bigTitle{
+.bigTitle {
     font-size: 45px;
-    font-family:  Quicksand, Arial, sans-serif;
+    font-family: Quicksand, Arial, sans-serif;
 }
 
-.bigDescription{
+.bigDescription {
     background-color: rgba(37, 38, 55, 0.80);
     color: white;
     padding: 10px 15%;
     text-align: justify;
 }
 
-.error{
+.error {
     font-size: 22px;
     font-weight: bold;
     color: red;
@@ -34,41 +33,44 @@ p{
     margin: 0;
 }
 
-.article a{
+.article a {
     text-decoration: none;
     color: #FFFFFF;
 }
 
-.article article:hover{
+.article article:hover {
     background: rgba(37, 38, 55, 1);
     transform: scale(1.1);
     transition: all 0.25s ease-in-out;
 }
 
-.article article:hover header h3{
+.article article:hover header h3 {
     background: red;
     color: #FFFFFF;
 }
 
-.article article:hover header p{
+.article article:hover header p {
     color: #ffb900;
 }
 
-.article article:hover p{
+.article article:hover p {
     color: #FFFFFF;
 }
 
-.newsArticle{
+.newsArticle {
     padding: 10px;
     margin: 10px 5px 0 0;
     display: inline-block;
     vertical-align: middle;
     width: 28%;
     background-color: rgba(37, 38, 55, 0.80);
+}
+
+.newsArticle article {
     transition: all 0.25s ease-in-out;
 }
 
-.tourArticle article{
+.tourArticle article {
     padding: 10px;
     margin: 10px 5px 0 0;
     display: inline-block;
@@ -79,7 +81,7 @@ p{
     transition: all 0.25s ease-in-out;
 }
 
-.aboutArticle{
+.aboutArticle {
     padding: 10px 15%;
     color: #FFFFFF;
     margin: 10px 5px 0 0;
