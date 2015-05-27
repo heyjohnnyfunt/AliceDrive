@@ -13,12 +13,10 @@
 
     <?php include(D_VIEW . "header.php"); ?>
 
-    <section >
+    <section id="section">
+
         <h1 class="content"><?php echo $header; ?></h1>
         <?php include BASE_PATH . D_VIEW . $contentView; ?>
-
-        <!--<h3><?php /*echo $pageData['title']*/ ?></h3>
-        <p><?php /*echo $pageData['body'] */ ?></p>-->
 
     </section>
 

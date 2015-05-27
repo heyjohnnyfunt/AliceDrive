@@ -2,12 +2,21 @@ html{
     /* to set footer on page bottom always */
     height:100%;
 }
+@font-face {
+
+    font-family: Futurica; /* имя шрифта для CSS правил */
+    src: local("Futurica"), url(ft.ttf); /* если шрифт не установлен, тогда загружаем его по указанному пути */
+}
+
 body{
-    font-family:  Quicksand,'Open Sans', Helvetica, Arial, sans-serif;
+    font-family:  Quicksand, Futurica, Arial, monospace, sans-serif;
     margin: 0;
     min-width: 200px;
     height: 100%;
 }
+
+a { text-decoration: none; color: #FFFFFF; }
+a:hover { text-decoration: underline; }
 
 #wrapper{
     min-height: 100%;
@@ -20,8 +29,6 @@ section{
 }
 
 .content{
-    /*max-width: 1200px;*/
-    /*padding: 10px 0 100px 20px;*/
     padding: 0 15%;
 }
 
@@ -45,6 +52,7 @@ footer{
     text-align: center;
     padding: 10px 15px;
     border: 0 none;
+    vertical-align: middle;
     letter-spacing: 1px;
     font-weight: bold;
     text-transform: uppercase;
@@ -58,7 +66,8 @@ footer{
     color: #ffffff;
 }
 
-.button:active {
+.button:active, .button-active {
+    background-color: #373855;
     position: relative;
     top: 1px;
 }
@@ -67,22 +76,6 @@ footer{
     float: right;
 }
 
-.input{
-    background: #ffffff;
-    font-size: 16px;
-    width: 100%;
-    padding: 3px;
-    margin: 0 6px 5px 0;
-    outline: 0;
-    border: 1px solid #d9d9d9;
-}
-
-.input:focus {
-    border: 1px solid #373855;
-    -webkit-box-shadow: 0 0 3px 0 #373855;
-    -moz-box-shadow: 0 0 3px 0 #373855;
-    box-shadow: 0 0 3px 0 #373855;
-}
 
 .left-col{
     width: 50%;

@@ -32,6 +32,7 @@ namespace MainWebSite {
 
         public function getArticleById($id)
         {
+            if(!is_numeric($id)) return 0;
             $sql = "SELECT
                     title,
                     DATE_FORMAT(post_date, '%d.%m.%Y') as date,

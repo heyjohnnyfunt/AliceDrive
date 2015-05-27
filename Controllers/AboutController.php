@@ -30,7 +30,7 @@ class AboutController extends BaseController {
             $this->view->set('page_title', 'About');
             $this->view->set('site_title', 'Alice Drive');
 
-            $this->view->output('AboutView.php', 'pageTemplate.php');
+            $this->view->output('AboutView.php');
 
         } catch (Exception $e) {
             echo "Application error:" . $e->getMessage();

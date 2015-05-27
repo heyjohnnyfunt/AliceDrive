@@ -40,7 +40,7 @@ namespace MainWebSite {
             return $this->data[$key];
         }
 
-        public function output($contentView, $templateView)
+        public function output($contentView)
         {
             if (!file_exists($this->file)) {
                 throw new Exception("Model file " . $this->file . " doesn't exist.");
@@ -52,7 +52,7 @@ namespace MainWebSite {
             $output = ob_get_contents();
             ob_end_clean();
 
-            include BASE_PATH . D_VIEW . $templateView;
+            include BASE_PATH . D_VIEW . 'pageTemplate.php';
 
             return $output;
         }

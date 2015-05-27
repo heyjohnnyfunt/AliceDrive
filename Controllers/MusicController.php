@@ -26,7 +26,7 @@ class MusicController extends BaseController{
             $this->view->set('page_title', 'Music');
             $this->view->set('site_title', 'Alice Drive');
 
-            $this->view->output('MusicView.php', 'pageTemplate.php');
+            $this->view->output('MusicView.php');
 
         } catch (Exception $e) {
             echo "Application error:" . $e->getMessage();

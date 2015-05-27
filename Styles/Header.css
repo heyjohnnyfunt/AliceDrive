@@ -16,12 +16,6 @@ body{
     margin: auto;
 }
 
-#login{
-    display: block;
-    color: #ffffff;
-    width: 100%;
-}
-
 #debug-console{
     float: left;
     width: 100%;
@@ -29,14 +23,4 @@ body{
     color: #ffffff;
 }
 
-.loginForm{
-    display: none;
-    width: auto;
-    background: gray;
-    padding: 10px;
-}
-
-.login-expended{
-    display: block;
-}
 

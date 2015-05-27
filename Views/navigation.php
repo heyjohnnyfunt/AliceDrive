@@ -8,9 +8,10 @@
 
             foreach ($pageArray as $key => $page) {
 
-                if ($page['title'] != 'Home Page')
-                    echo '<li><a href="/' . $page['slug'] . '">'
+                if ($page['title'] != 'Home Page'){
+                    echo '<li><a href="/' . $page['slug'] . '">' // onclick="GetContent(\'' . $page['slug'] . '\')"
                         . $page['title'] . '</a></li>';
+                }
             }
             ?>
         </ul>

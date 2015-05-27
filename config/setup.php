@@ -12,8 +12,8 @@ namespace MainWebSite {
     DEFINE('D_VIEW', 'Views/');
     DEFINE('D_CONTROLLER', 'Controllers/');
 
-    $site_title = 'Alice Drive Official';
-    $page_title = 'Home Page';
+//    $site_title = 'Alice Drive Official';
+//    $page_title = 'Home Page';
 
 # Include required file
     require(BASE_PATH . 'Controllers/PageController.php');

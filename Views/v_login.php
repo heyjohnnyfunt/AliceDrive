@@ -9,27 +9,35 @@
 ?>
 
 <div id="login">
-    <!-- <h1><?php /*echo $this->getData('name')*/ ?></h1>-->
-    <form method="POST">
-        <!--<div class="button"><a href="../Login/login.php">Login</a></div>-->
 
-        <input type="submit" name="login" class="button" value="Log In"/>
+    <input type="submit" name="login" class="button" id="login-dropdown-button" value="Log In"/>
 
-        <!-- TODO: do not forget about this -->
-        <a href="/admin" class="button">Admin</a>
-        <!-- <div class="loginForm">
-             <form method="POST">
-                 <p> Username:
-                     <input name="user" type="text">
-                 </p>
-                 <p> Password:
-                     <input name="pass" type="password">
-                 </p>
-                 <input type="submit" name="op" value="Login">
-             </form>
-         </div>-->
+    <!-- TODO: do not forget about this -->
+    <a href="/admin" class="button">Admin</a>
 
-    </form>
+    <div id="content-login" class="content">
+
+        <a href="#" class="slidelink" id="showregister">Don't Have An Account? &rarr;</a>
+
+        <form id="loginForm" name="loginForm" method="POST">
+
+            <fieldset>
+                <label for="username"> Username: </label>
+                <input name="username" id="username" type="text" class="input">
+            </fieldset>
+
+            <fieldset>
+                <label for="password"> Password:</label>
+                <input name="password" id="password" type="password" class="input">
+            </fieldset>
+
+            <fieldset>
+                <label for="checkbox"><input type="checkbox" id="checkbox"/>Remember me</label>
+                <input type="submit" name="op" id="loginButton" class="button" value="Login">
+            </fieldset>
+        </form>
+    </div>
+
 
 
 </div>

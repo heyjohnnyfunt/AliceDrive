@@ -29,7 +29,7 @@ namespace MainWebSite {
                 $this->view->set('page_title', 'Tours');
                 $this->view->set('site_title', 'Alice Drive');
 
-                $this->view->output('TourView.php', 'pageTemplate.php');
+                $this->view->output('TourView.php');
 
             } catch (Exception $e) {
                 echo "Application error:" . $e->getMessage();

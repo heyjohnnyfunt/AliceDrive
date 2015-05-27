@@ -60,7 +60,8 @@ namespace MainWebSite {
                     body
                 FROM
                     tours
-                ORDER BY date_time DESC
+                ORDER BY
+                    abs(now() - date) desc
                 LIMIT 1";
 
             $this->setSql($sql);

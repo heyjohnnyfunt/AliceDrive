@@ -30,7 +30,7 @@ namespace MainWebSite {
                 $this->view->set('page_title', 'News');
                 $this->view->set('site_title', 'Alice Drive');
 
-                $this->view->output('NewsView.php', 'pageTemplate.php');
+                $this->view->output('NewsView.php');
 
             } catch (Exception $e) {
                 echo "Application error:" . $e->getMessage();
@@ -62,23 +62,12 @@ namespace MainWebSite {
                     Точнее, не только лишь все. Не каждый может это сделать..');
                 }
 
-                return $this->view->output('TopicView.php', 'pageTemplate.php');
+                return $this->view->output('TopicView.php');
 
             } catch (Exception $e) {
                 echo "Application error:" . $e->getMessage();
             }
         }
-        /*function __construct2()
-        {
-            require_once BASE_PATH . D_MODEL . 'NewsModel.php';
-            $this->model = new NewsModel();
-            $this->view = new BaseView();
-        }
 
-        function index2()
-        {
-            $data = $this->model->get_data();
-            $this->view->generate('NewsView.php', 'pageTemplate.php', $data);
-        }*/
     }
 }
