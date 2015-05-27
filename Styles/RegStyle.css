@@ -1,6 +1,5 @@
-#content-login, #content-login-page {
-    position: relative;
-    display: none;
+#content-reg{
+    display: block;
     color: #ffffff;
     background: #373855;
     width: 100%;
@@ -9,28 +8,29 @@
     padding-top: 10px;
 }
 
-.loginForm {
+
+#regForm {
     display: block;
     width: auto;
     padding: 10px;
 }
 
-.loginForm fieldset {
+#regForm fieldset {
     padding: 2px;
-    display: inline;
+    display: block;
     border:0;
 }
 
-.loginForm label {
+#regForm label {
     font-weight: bold;
-    display: block;
+    display: inline;
     text-transform: uppercase;
     letter-spacing: 0.2em;
     font-size: 1.1em;
     line-height: 1.45em;
 }
 
-.loginForm #checkbox {
+#regForm #checkbox {
     width: auto;
     margin: 1px 9px 0 0;
     padding: 0;
@@ -38,7 +38,7 @@
     vertical-align: middle;
 }
 
-.loginForm .input {
+#regForm .input {
     background: #ffffff;
     font-size: 1em;
     line-height: 1.75em;
@@ -51,7 +51,7 @@
     transition: all 0.4s linear;
 }
 
-.loginForm .input:focus {
+#regForm .input:focus {
     border: 1px solid #373855;
     -webkit-box-shadow: 0 0 3px 0 #373855;
     -moz-box-shadow: 0 0 3px 0 #373855;

@@ -1,25 +1,10 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: skogs
- * Date: 22.03.2015
- * Time: 21:56
- */
-
-?>
-
 <div id="login">
-
-    <input type="submit" name="login" class="button" id="login-dropdown-button" value="Log In"/>
-
-    <!-- TODO: do not forget about this -->
-    <a href="/admin" class="button">Admin</a>
 
     <div id="content-login" class="content">
 
-        <a href="#" class="slidelink" id="showregister">Don't Have An Account? &rarr;</a>
+        <a href="/registration">Don't Have An Account? &rarr;</a>
 
-        <form id="loginForm" name="loginForm" method="POST">
+        <form id="loginForm" class="loginForm" name="loginForm" method="POST">
 
             <fieldset>
                 <label for="username"> Username: </label>
@@ -37,7 +22,6 @@
             </fieldset>
         </form>
     </div>
-
 
 
 </div>

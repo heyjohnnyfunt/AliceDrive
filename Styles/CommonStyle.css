@@ -1,38 +1,45 @@
-html{
+html {
     /* to set footer on page bottom always */
-    height:100%;
+    height: 100%;
 }
+
 @font-face {
 
     font-family: Futurica; /* имя шрифта для CSS правил */
     src: local("Futurica"), url(ft.ttf); /* если шрифт не установлен, тогда загружаем его по указанному пути */
 }
 
-body{
-    font-family:  Quicksand, Futurica, Arial, monospace, sans-serif;
+body {
+    font-family: Quicksand, Futurica, Arial, monospace, sans-serif;
     margin: 0;
     min-width: 200px;
     height: 100%;
 }
 
-a { text-decoration: none; color: #FFFFFF; }
-a:hover { text-decoration: underline; }
+a {
+    text-decoration: none;
+    color: #FFFFFF;
+}
 
-#wrapper{
+a:hover {
+    text-decoration: underline;
+}
+
+#wrapper {
     min-height: 100%;
     position: relative;
 }
 
-section{
+section {
     margin: auto;
     padding-bottom: 50px;
 }
 
-.content{
+.content {
     padding: 0 15%;
 }
 
-footer{
+footer {
     width: 100%;
     margin: auto;
     bottom: 0px;
@@ -41,14 +48,14 @@ footer{
     color: white;
 }
 
-.formButton{
+.formButton {
     display: inline;
 }
 
-.button{
+.button {
     cursor: pointer;
     color: #ffffff;
-    background:#000000;
+    background: #000000;
     text-align: center;
     padding: 10px 15px;
     border: 0 none;
@@ -72,12 +79,11 @@ footer{
     top: 1px;
 }
 
-.delete-button{
+.delete-button {
     float: right;
 }
 
-
-.left-col{
+.left-col {
     width: 50%;
     display: inline-block;
     padding: 0 5% 0 15%;
@@ -93,12 +99,49 @@ footer{
     color: #FFFFFF;
     background: #373855;
 }
-.right-col-stuck{
-    position:fixed;
-    z-index:100;
-    top:0;
+
+.right-col-stuck {
+    position: fixed;
+    z-index: 100;
+    top: 0;
 }
 
-#footer{
+#footer {
     padding: 10px 15px;
+}
+
+/* KEYFRAMES */
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, 100%, 0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes fadeInRight {
+    0% {
+        opacity: 0;
+        transform: translate3d(100%, 0, 0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: none;
+    }
 }

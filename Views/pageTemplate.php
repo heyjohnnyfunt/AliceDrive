@@ -9,11 +9,11 @@
 </head>
 <body>
 
-<div id="wrapper">
+<div class="m-scene" id="wrapper">
 
     <?php include(D_VIEW . "header.php"); ?>
 
-    <section id="section">
+    <section id="section" class="scene_element scene_element--fadeinup">
 
         <h1 class="content"><?php echo $header; ?></h1>
         <?php include BASE_PATH . D_VIEW . $contentView; ?>

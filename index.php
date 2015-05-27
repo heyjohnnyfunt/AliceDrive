@@ -1,23 +1,38 @@
 <?php
-namespace /*MainWebSite*/ {
-    require_once("config/setup.php");
-    require_once("config/bootstrap.php");
-    /*function __autoload($class)
-    {
-        if (file_exists(BASE_PATH . DS . 'models' . DS . strtolower($class) . '.php'))
-        {
-            require_once BASE_PATH . DS . 'models' . DS . strtolower($class) . '.php';
-        }
-        else if (file_exists(BASE_PATH . DS . 'controllers' . DS . strtolower($class) . '.php'))
-        {
-            require_once BASE_PATH . DS . 'controllers'  . DS . strtolower($class) . '.php';
-        }
-    }*/
+/**
+ * Created by PhpStorm.
+ * User: skogs
+ * Date: 27.05.2015
+ * Time: 20:29
+ */
+include("config/setup.php");
+include("config/bootstrap.php");
 
-    /*require BASE_PATH . 'core/BaseView.php';
-    $view = new BaseView('Views/pageTemplate.php');
-    $view->set('page_title', 'This is a simple template file!');
-    $view->set('greeting', 'Hello, World!');
-    $view->set('site_title', 'This is a simple template file!');
-    $view->output();*/
+recurse(".");
+
+function recurse($path){
+    foreach(scandir($path) as $o){
+        if($o != "." && $o != ".."){
+            $full = $path . "/" . $o;
+            echo $full;
+            /*if(is_dir($full)){
+                if(!file_exists($full . "/index.php")){
+                    file_put_contents($full . "/index.php", "");
+                }
+                recurse($full);
+            }*/
+        }
+    }
+}
+function rrmdir($dir) {
+    if (is_dir($dir)) {
+        $objects = scandir($dir);
+        foreach ($objects as $object) {
+            if ($object != "." && $object != "..") {
+                if (filetype($dir."/".$object) == "file") rrmdir($dir."/".$object); else unlink($dir."/".$object);
+            }
+        }
+        reset($objects);
+        rmdir($dir);
+    }
 }
