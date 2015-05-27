@@ -1,0 +1,64 @@
+#content-login {
+    position: absolute;
+    display: none;
+    color: #ffffff;
+    background: #373855;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0 auto;
+    /*padding: 5px 15px 5px;*/
+    padding-top: 10px;
+}
+
+#loginForm {
+    display: block;
+    width: auto;
+    padding: 10px;
+}
+
+#loginForm fieldset {
+    padding: 2px;
+    display: inline;
+    border:0;
+}
+
+#loginForm label {
+    font-weight: bold;
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 1.1em;
+    line-height: 1.45em;
+}
+
+.login-expended {
+    display: block;
+}
+
+#loginForm #checkbox {
+    width: auto;
+    margin: 1px 9px 0 0;
+    padding: 0;
+    border: 0;
+    vertical-align: middle;
+}
+
+#loginForm .input {
+    background: #ffffff;
+    font-size: 1em;
+    line-height: 1.75em;
+    padding: 3px;
+    margin: 0 6px 5px 0;
+    width: 100%;
+    border-radius: 3px;
+    border: 1px solid #d9d9d9;
+    box-shadow: inset 0 1px 4px 0 rgba(176, 199, 221, .5);
+    transition: all 0.4s linear;
+}
+
+#loginForm .input:focus {
+    border: 1px solid #373855;
+    -webkit-box-shadow: 0 0 3px 0 #373855;
+    -moz-box-shadow: 0 0 3px 0 #373855;
+    box-shadow: 0 0 3px 0 #373855;
+}
