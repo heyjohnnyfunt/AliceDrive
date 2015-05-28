@@ -7,6 +7,7 @@
     box-sizing: border-box;
     margin: 0 auto;
     padding-top: 10px;
+    z-index: 100;
 }
 
 .loginForm {
@@ -38,7 +39,7 @@
     vertical-align: middle;
 }
 
-.loginForm .input {
+.input {
     background: #ffffff;
     font-size: 1em;
     line-height: 1.75em;
@@ -51,7 +52,7 @@
     transition: all 0.4s linear;
 }
 
-.loginForm .input:focus {
+.input:focus {
     border: 1px solid #373855;
     -webkit-box-shadow: 0 0 3px 0 #373855;
     -moz-box-shadow: 0 0 3px 0 #373855;

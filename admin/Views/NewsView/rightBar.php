@@ -1,3 +1,4 @@
+<?php defined('ACCESS_ALLOWED') or die('Restricted Access'); ?>
 <div class="right-bar">
 
     <?php if (isset($message)) echo $message; ?>

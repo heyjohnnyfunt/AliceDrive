@@ -10,11 +10,6 @@ namespace MainWebSite;
 use Exception;
 
 class AboutController extends BaseController {
-    public function __construct($model)
-    {
-        parent::__construct($model);
-        $this->model = new AboutModel();
-    }
 
     public function index()
     {

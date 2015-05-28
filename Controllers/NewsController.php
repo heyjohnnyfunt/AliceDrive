@@ -11,14 +11,6 @@ namespace MainWebSite {
 
     class NewsController extends BaseController
     {
-        public function __construct($model)
-        {
-//            require_once BASE_PATH . D_MODEL . 'NewsModel.php';
-            parent::__construct($model);
-//            $this->_setModel($model);
-            $this->model = new NewsModel();
-        }
-
         public function index()
         {
             try

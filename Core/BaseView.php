@@ -7,23 +7,13 @@
  * Time: 12:22
  */
 namespace MainWebSite {
+    defined('ACCESS_ALLOWED') or die('Restricted Access');
     use Exception;
 
     class BaseView
     {
         protected $file;
         protected $data = array();
-
-        /*function generate($contentView, $template_view, $data = null)
-        {
-            if(is_array($data)) {
-                // преобразуем элементы массива в переменные
-                extract($data);
-            }
-
-            include BASE_PATH . D_VIEW . $template_view;
-        }*/
-
 
         public function __construct($fileName)
         {

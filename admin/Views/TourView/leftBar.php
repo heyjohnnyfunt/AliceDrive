@@ -1,3 +1,4 @@
+<?php defined('ACCESS_ALLOWED') or die('Restricted Access'); ?>
 <script>
     function showConfirm(id)
     {

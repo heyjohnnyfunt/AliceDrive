@@ -2,7 +2,7 @@
 
     <div id="content-login" class="content">
 
-        <a href="/registration">Don't Have An Account? &rarr;</a>
+        <a href="/user">Don't Have An Account? &rarr;</a>
 
         <form id="loginForm" class="loginForm" name="loginForm" method="POST">
 
@@ -18,7 +18,7 @@
 
             <fieldset>
                 <label for="checkbox"><input type="checkbox" id="checkbox"/>Remember me</label>
-                <input type="submit" name="op" id="loginButton" class="button" value="Login">
+                <input type="submit" name="LoginButtonClick" id="loginButton" class="button" value="Login">
             </fieldset>
         </form>
     </div>

@@ -12,10 +12,10 @@ namespace Admin {
     {
         function InsertUpdate($id)
         {
-            $username = $this->_db->real_escape_string($_POST['username']);
-            $email = $this->_db->real_escape_string($_POST['email']);
-            $firstname = $this->_db->real_escape_string($_POST['firstname']);
-            $lastname = $this->_db->real_escape_string($_POST['lastname']);
+            $username = $this->_db->real_escape_string($this->transform_input($_POST['username']));
+            $email = $this->_db->real_escape_string($this->transform_input($_POST['email']));
+            $firstname = $this->_db->real_escape_string($this->transform_input($_POST['firstname']));
+            $lastname = $this->_db->real_escape_string($this->transform_input($_POST['lastname']));
 
             //TODO: fix - after page reload repeated form sending
             if (isset($_GET['id']) && trim($_GET['id']) != '')

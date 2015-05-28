@@ -10,11 +10,6 @@ namespace MainWebSite;
 use Exception;
 
 class MusicController extends BaseController{
-    public function __construct($model)
-    {
-        parent::__construct($model);
-        $this->model = new MusicModel();
-    }
 
     public function index()
     {

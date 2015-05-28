@@ -21,7 +21,7 @@
             <!-- TODO: Кнопка Log Out съезжает. Расположить по центру по вертикали -->
 
             <li id="logout">
-                <p>Hello, <?php echo $currentUser['username'] ?></p>
+                <p>Hello, <?php echo $currentUser/*['username']*/; ?></p>
 
                 <form class="formButton" method="POST" role="form" action="admin_logout.php">
                     <input type="submit" name="login" class="button" value="Log Out"/>

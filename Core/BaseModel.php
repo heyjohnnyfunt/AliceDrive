@@ -6,6 +6,7 @@
  * Time: 12:29
  */
 namespace MainWebSite {
+    defined('ACCESS_ALLOWED') or die('Restricted Access');
     use mysqli, Exception;
 
     class BaseModel
@@ -69,5 +70,15 @@ namespace MainWebSite {
             else $data = 'Error';
             return $data;
         }
+
+        function transform_input($data)
+        {
+            $data = trim($data);
+            $data = strip_tags($data);
+            $data = stripslashes($data);
+            $data = htmlspecialchars($data);
+            return $data;
+        }
+
     }
 }

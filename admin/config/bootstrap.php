@@ -10,10 +10,10 @@ namespace Admin {
 
     if (!isset($_SESSION['username'])) {
         header("Location: admin_login.php");
-    } else {
+    } /*else {
         $controller = new PageController();
         $currentUser = $controller->GetCurrentUser($_SESSION['username']);
-    }
+    }*/
 
     require_once ADMIN_PATH . 'Core/BaseModel.php';
     require_once ADMIN_PATH . 'Core/BaseController.php';
@@ -21,5 +21,5 @@ namespace Admin {
 
     require_once ADMIN_PATH . 'Core/Route.php';
 
-    new Route($currentUser);
+    new Route($_SESSION['username']);
 }

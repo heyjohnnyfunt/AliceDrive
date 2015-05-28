@@ -1,12 +1,7 @@
+<?php defined('ACCESS_ALLOWED') or die('Restricted Access'); ?>
 <div class="right-bar">
 
-    <?php
-
-    if (isset($message)) echo $message;
-    /*if (isset($_GET['id'])) {
-        $userItem = $comController->GetUser('id', $_GET['id']);
-    }*/
-    ?>
+    <?php if (isset($message)) echo $message; ?>
 
     <form action="index.php?page=community<?php if (isset($_GET['id'])) echo '&id=' . $userItem['id']; ?>"
           method="post" role="form" id="main-form">

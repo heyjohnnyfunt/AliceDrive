@@ -1,6 +1,8 @@
 <?php
 namespace MainWebSite {
 
+    defined('INDEX_ACCESS_ALLOWED') or die('Restricted Access');
+
 // Debugging tool
     error_reporting(E_ALL);
 
@@ -21,7 +23,7 @@ namespace MainWebSite {
 
 # Page Controllers object
 
-    $pageController = new PageController();
+    //$pageController = new PageController();
 
     /*$path = parse_path();
     $pageData = $pageController->GetPageData($path['call_parts'][0]);*/

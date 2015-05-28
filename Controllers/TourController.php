@@ -11,12 +11,6 @@ namespace MainWebSite {
 
     class TourController extends BaseController
     {
-        public function __construct($model)
-        {
-            parent::__construct($model);
-            $this->model = new TourModel();
-        }
-
         public function index()
         {
             try {

@@ -7,6 +7,7 @@
  */
 
 namespace MainWebSite{
+    defined('ACCESS_ALLOWED') or die('Restricted Access');
     class Route
     {
         protected $controller = 'News';
@@ -33,12 +34,12 @@ namespace MainWebSite{
 
             // Controller
             $controllerName =  ucwords($this->controller) . 'Controller';
-            $viewName = ucwords($this->controller) . 'View';
+            //$viewName = ucwords($this->controller) . 'View';
             require_once BASE_PATH . D_CONTROLLER . $controllerName . '.php';
 
             // To use dynamic name of controller:
             $controllerName = $this->namespace . DS . $controllerName;
-            $this->controller = new  $controllerName($viewName);
+            $this->controller = new $controllerName($this->controller);
 
             // Method
             if (isset($url[2]))

@@ -16,16 +16,18 @@
 
         <fieldset>
             <label for="checkbox"><input type="checkbox" id="checkbox"/>Remember me</label>
-            <input type="submit" name="op" id="loginButton" class="button" value="Login">
+            <input type="submit" name="LoginButtonClick" id="loginButton" class="button" value="Login">
         </fieldset>
     </form>
 </div>
 
 <div id="content-reg" class="content">
 
+    <?php if (isset($message)) echo $message; ?>
+
     <a href="#" id="showLogin">&larr; Already have an account?</a>
 
-    <form id="regForm" name="regForm" method="POST">
+    <form id="regForm" name="regForm" method="POST" onsubmit="return CheckRegForm(this)">
 
         <fieldset>
             <label for="username">Username:</label>
@@ -44,17 +46,22 @@
 
         <fieldset>
             <label for="email">E-mail address:</label>
-            <input name="email" id="email" type="text" class="input">
+            <input name="email" id="email" type="email" class="input">
         </fieldset>
 
         <fieldset>
             <label for="password">Password:</label>
-            <input name="password" id="password" type="text" class="input">
+            <input name="password" id="password" type="password" class="input">
         </fieldset>
 
         <fieldset>
             <label for="confPassword">Confirm password:</label>
-            <input name="confPassword" id="confPassword" type="text" class="input">
+            <input name="confPassword" id="confPassword" type="password" class="input">
+        </fieldset>
+
+        <fieldset>
+            <label for="checkbox"><input type="checkbox" id="checkbox"/>Remember me</label>
+            <input type="submit" name="RegistrationButtonClick" id="loginButton" class="button" value="Sign up">
         </fieldset>
     </form>
 

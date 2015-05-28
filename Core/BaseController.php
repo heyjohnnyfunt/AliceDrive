@@ -6,37 +6,26 @@
  * Time: 12:16
  */
 namespace MainWebSite {
+    defined('ACCESS_ALLOWED') or die('Restricted Access');
 
     class BaseController
     {
         public $model;
         public $view;
         protected $controller;
-        protected $modelBaseName;
+        protected $viewBaseName;
 
-        public function __construct($model)
+        public function __construct($controller)
         {
-            $this->controller = ucwords(__CLASS__);
-            $this->modelBaseName = $model;
+            $this->controller = ucwords($controller);
+            $this->viewBaseName = $this->controller . 'View.php';
 
-            $this->view = new BaseView(BASE_PATH . D_VIEW . $this->modelBaseName . '.php');
+            $modelName = __NAMESPACE__ . DS . ucwords($this->controller) . 'Model';
+            $this->model = new $modelName();
+
+            $this->view = new BaseView(BASE_PATH . D_VIEW . $this->viewBaseName);
         }
 
         function index() {}
-
-
-        /*function __construct2()
-        {
-            $this->view = new BaseView();
-        }
-        protected function _setModel($modelName)
-        {
-            $this->model = new $modelName();
-        }
-
-        protected function _setView($viewName)
-        {
-            $this->view = new BaseView(BASE_PATH . 'Views' . DS . strtolower($this->modelBaseName) . '.php');
-        }*/
     }
 }

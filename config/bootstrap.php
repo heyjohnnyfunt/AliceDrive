@@ -6,7 +6,9 @@
  * Time: 22:48
  */
 namespace MainWebSite {
+    defined('INDEX_ACCESS_ALLOWED') or die('Restricted Access');
 
+    define('ACCESS_ALLOWED',1);
     require_once BASE_PATH . 'Core/BaseModel.php';
     require_once BASE_PATH . 'Core/BaseController.php';
     require_once BASE_PATH . 'Core/BaseView.php';
