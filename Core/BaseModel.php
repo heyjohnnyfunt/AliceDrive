@@ -80,5 +80,20 @@ namespace MainWebSite {
             return $data;
         }
 
+        function CheckUser()
+        {
+            $username = $this->_db->real_escape_string($this->transform_input($_POST['username']));
+            $password = $this->_db->real_escape_string($this->transform_input($_POST['password']));
+            if (empty($username) || empty($password))
+                return '<p class="error">Check your data</p>';
+
+            $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
+            if($this->_db->query($sql)){
+                $_SESSION['username'] = $username;
+                return true;
+            }
+            else return false;
+        }
+
     }
 }

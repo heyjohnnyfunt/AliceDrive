@@ -29,10 +29,10 @@ namespace MainWebSite {
             }
         }
 
-        public function topic($articleId)
+        public function topic($articleId = null)
         {
-            try {
-
+            try
+            {
                 $article = $this->model->getArticleById($articleId);
 
                 if ($article)

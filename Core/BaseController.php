@@ -24,8 +24,15 @@ namespace MainWebSite {
             $this->model = new $modelName();
 
             $this->view = new BaseView(BASE_PATH . D_VIEW . $this->viewBaseName);
+
+            if(isset($_POST['LoginButtonClick'])){
+                if($this->model->CheckUser()){
+                    header('Location: /user/account');
+                };
+            }
         }
 
-        function index() {}
+        function index() {
+        }
     }
 }

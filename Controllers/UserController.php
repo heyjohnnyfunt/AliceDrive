@@ -13,7 +13,8 @@ class UserController extends BaseController
 {
     function index()
     {
-        try {
+        try
+        {
             if(isset($_SESSION['username'])){
                 header("Location: /user/account");
             }
@@ -40,6 +41,10 @@ class UserController extends BaseController
     function account()
     {
         try {
+            if (!isset($_SESSION['username'])) {
+                header("Location: /user");
+            }
+
             $this->view->set('header', 'Личный кабинет');
             $this->view->set('page_title', 'Account');
             $this->view->set('site_title', 'Alice Drive');

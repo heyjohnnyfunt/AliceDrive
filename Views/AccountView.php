@@ -33,6 +33,8 @@
         </fieldset>
 
         <input type="submit" name="RegistrationButtonClick" id="loginButton" class="button" value="Сохранить изменения">
+
+        <a href="/logout.php" class="button">Log out</a>
     </form>
 
 </div>
