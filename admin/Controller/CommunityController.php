@@ -55,7 +55,7 @@ namespace Admin {
 
         function DeleteUser($id)
         {
-            return $this->model->Delete("music", $id);
+            return $this->model->Delete("users", $id);
         }
 
         function InsertUser($id = null)

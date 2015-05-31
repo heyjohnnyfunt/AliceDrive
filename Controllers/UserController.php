@@ -7,31 +7,33 @@
  */
 
 namespace MainWebSite;
+
 use Exception;
 
 class UserController extends BaseController
 {
     function index()
     {
-        try
-        {
-            if(isset($_SESSION['username'])){
+        try {
+            if ($this->CheckLogin()) {
                 header("Location: /user/account");
             }
-
             $this->view->set('header', 'Присоединяйся к нам');
             $this->view->set('page_title', 'Registration');
             $this->view->set('site_title', 'Alice Drive');
 
-            if(isset($_POST['RegistrationButtonClick'])){
-                $this->view->set('message', $this->model->AddUser());
+            if (isset($_POST['RegistrationButtonClick'])) {
+                $this->view->set('message', $this->model->RegUser());
             }
-            else if(isset($_POST['LoginButtonClick'])){
-                if($this->model->CheckUser()){
-                    header('Location: /user/account');
-                };
+            if (isset($_POST['LoginButtonClick'])) {
+                $result = $this->Login();
+                if ($result === true) {
+//                    echo '<script>alert("username = ' . $username .' password = ' . $password . '");</script>';
+                    header('Location: /');
+                    exit();
+                }
+                else $this->view->set('message', $result);
             }
-
             $this->view->output('UserView.php');
         } catch (Exception $e) {
             echo "Application error:" . $e->getMessage();
@@ -41,13 +43,30 @@ class UserController extends BaseController
     function account()
     {
         try {
-            if (!isset($_SESSION['username'])) {
+            if (!$this->CheckLogin()) {
                 header("Location: /user");
+            }
+            if (isset($_POST['LogoutButtonClick'])) {
+                $this->Logout();
             }
 
             $this->view->set('header', 'Личный кабинет');
             $this->view->set('page_title', 'Account');
             $this->view->set('site_title', 'Alice Drive');
+
+            if(!$this->GetUserInfo()) {
+                $this->view->set('message', 'Ошибка в получении данных');
+            }
+            else{
+                $this->view->set('username', $_SESSION['username']);
+                $this->view->set('firstname', $_SESSION['firstname']);
+                $this->view->set('lastname', $_SESSION['lastname']);
+                $this->view->set('email', 'na');
+            }
+
+            if(isset($_POST['SaveChangesButtonClick'])){
+                $this->view->set('message', $this->model->UpdateUser());
+            }
 
             $this->view->output('AccountView.php');
         } catch (Exception $e) {

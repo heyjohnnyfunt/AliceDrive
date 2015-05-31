@@ -12,19 +12,13 @@ namespace MainWebSite {
     DEFINE('DS', DIRECTORY_SEPARATOR);
     DEFINE('D_MODEL', 'Models/');
     DEFINE('D_VIEW', 'Views/');
+    DEFINE('D_TEMPLATE', 'Templates/');
     DEFINE('D_CONTROLLER', 'Controllers/');
 
-//    $site_title = 'Alice Drive Official';
-//    $page_title = 'Home Page';
+    DEFINE("SECURE", FALSE);    // FOR DEVELOPMENT ONLY
 
 # Include required file
     require(BASE_PATH . 'Controllers/PageController.php');
     require(BASE_PATH . 'Controllers/functions.php');
 
-# Page Controllers object
-
-    //$pageController = new PageController();
-
-    /*$path = parse_path();
-    $pageData = $pageController->GetPageData($path['call_parts'][0]);*/
 }

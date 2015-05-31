@@ -4,14 +4,13 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <?php include("config/css.php"); ?>
     <?php include("config/js.php"); ?>
-    <title> <?php echo /*$pageData['title']*/
-            $page_title . ' | ' . $site_title; ?> </title>
+    <title> <?php echo $page_title . ' | ' . $site_title; ?> </title>
 </head>
 <body>
 
 <div class="m-scene" id="wrapper">
 
-    <?php include(D_VIEW . "header.php"); ?>
+    <?php include("header.php"); ?>
 
     <section id="section" class="scene_element scene_element--fadeinup">
 
@@ -20,7 +19,7 @@
 
     </section>
 
-    <?php include(D_VIEW . "footer.php"); ?>
+    <?php include("footer.php"); ?>
 
 </div>
 

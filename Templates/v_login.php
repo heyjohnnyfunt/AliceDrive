@@ -18,8 +18,10 @@
 
             <fieldset>
                 <label for="checkbox"><input type="checkbox" id="checkbox"/>Remember me</label>
-                <input type="submit" name="LoginButtonClick" id="loginButton" class="button" value="Login">
+                <input type="submit" name="LoginButtonClick" id="loginButton" class="button" value="Login"
+                       onclick="return formhash(this.form)">
             </fieldset>
+
         </form>
     </div>
 

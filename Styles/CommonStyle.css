@@ -68,7 +68,7 @@ footer {
 }
 
 .button:hover {
-    background-color: #373855;
+    background-color: #573855;
     transition: all 0.25s ease-in-out;
     color: #ffffff;
 }

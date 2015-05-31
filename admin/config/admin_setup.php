@@ -15,8 +15,5 @@ namespace Admin {
     DEFINE('ADMIN_CONTROLLER', 'Controller/');
     DEFINE('ADMIN_TEMPLATE', 'Template/');
 
-    $site_title = 'Alice Drive CMS';
-    $page_title = 'Admin';
-
     require(ADMIN_PATH . 'Controller/PageController.php');
 }

@@ -42,7 +42,7 @@ namespace MainWebSite {
             $output = ob_get_contents();
             ob_end_clean();
 
-            include BASE_PATH . D_VIEW . 'pageTemplate.php';
+            include BASE_PATH . D_TEMPLATE . 'pageTemplate.php';
 
             return $output;
         }

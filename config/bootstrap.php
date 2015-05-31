@@ -10,7 +10,8 @@ namespace MainWebSite {
 
     define('ACCESS_ALLOWED',1);
 
-    session_start();
+    include 'functions.php';
+    sec_session_start();
 
     require_once BASE_PATH . 'Core/BaseModel.php';
     require_once BASE_PATH . 'Core/BaseController.php';

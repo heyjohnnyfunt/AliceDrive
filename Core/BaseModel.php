@@ -26,7 +26,9 @@ namespace MainWebSite {
             }
         }
 
-        public function get_data() { }
+        public function get_data()
+        {
+        }
 
         protected function setSql($sql)
         {
@@ -88,11 +90,166 @@ namespace MainWebSite {
                 return '<p class="error">Check your data</p>';
 
             $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
-            if($this->_db->query($sql)){
+            if ($this->_db->query($sql)) {
                 $_SESSION['username'] = $username;
                 return true;
+            } else return false;
+        }
+
+        function Login($username, $password)
+        {
+            if ($stmt = $this->_db->prepare("SELECT
+                  id,
+                  password,
+                  salt,
+                  firstname,
+                  lastname
+                FROM
+                  users
+                WHERE
+                  username = ? LIMIT 1")
+            ) {
+                $stmt->bind_param('s', $username);  // Bind "$username" to parameter.
+                $stmt->execute();
+                $stmt->store_result();
+
+                // get variables from result.
+                $stmt->bind_result($user_id, $db_password, $salt, $firstname, $lastname);
+                $stmt->fetch();
+
+
+                // hash the password with the unique salt.
+                $password = hash('sha512', $password . $salt);
+                if ($stmt->num_rows == 1) {
+                    // If the user exists, we check if the account is locked
+                    // from too many login attempts
+                    if ($this->CheckBruteforce($user_id) == true) {
+                        // Account is locked
+                        // Send an email to user saying their account is locked
+                        return false;
+                    } else {
+                        // Check if the password in the database matches
+                        // the password the user submitted.
+                        if ($db_password == $password) {
+                            // Get the user-agent string of the user.
+                            $user_browser = $_SERVER['HTTP_USER_AGENT'];
+
+                            // XSS protection as we might print this value
+                            $user_id = preg_replace("/[^0-9]+/", "", $user_id);
+                            $username = preg_replace("/[^a-zA-Z0-9_-]+/", "", $username);
+
+                            $_SESSION['user_id'] = $user_id;
+                            $_SESSION['username'] = $username;
+                            $_SESSION['firstname'] = $firstname;
+                            $_SESSION['lastname'] = $lastname;
+                            $_SESSION['login_string'] = hash('sha512', $password . $user_browser);
+
+                            return true;
+                        } else {
+                            // If password is not correct, record this attempt in the database
+                            $now = time();
+                            if (!$this->_db->query("INSERT INTO
+                                      login_attempts(user_id, time)
+                                    VALUES
+                                      ('$user_id', '$now')")
+                            ) {
+                                return false;
+                                /*header("Location: ../error.php?err=Database error: login_attempts");
+                                exit();*/
+                            }
+                            return false;
+                        }
+                    }
+                } else {
+                    // No user exists.
+                    return false;
+                }
+            } else {
+                // Could not create a prepared statement
+                return false;
+                /*header("Location: ../error.php?err=Database error: cannot prepare statement");
+                exit();*/
             }
-            else return false;
+        }
+
+        function CheckBruteforce($user_id)
+        {
+            // Get timestamp of current time
+            $now = time();
+            // All login attempts are counted from the past 2 hours.
+            $valid_attempts = $now - (2 * 60 * 60);
+            if ($stmt = $this->_db->prepare("SELECT
+                                    time
+                                  FROM
+                                    login_attempts
+                                  WHERE
+                                    user_id = ? AND time > '$valid_attempts'")
+            ) {
+                $stmt->bind_param('i', $user_id);
+                $stmt->execute();
+                $stmt->store_result();
+                // If there have been more than 5 failed logins
+                if ($stmt->num_rows > 5) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                die('Bruteforce statement preparation failed.');
+                /*header("Location: ../error.php?err=Database error: cannot prepare statement");
+                exit();*/
+            }
+        }
+
+        function CheckLogin()
+        {
+            // Check if all session variables are set
+            if (isset($_SESSION['user_id'], $_SESSION['username'], $_SESSION['login_string']))
+            {
+                $user_id = $_SESSION['user_id'];
+                $login_string = $_SESSION['login_string'];
+                $user_browser = $_SERVER['HTTP_USER_AGENT'];
+
+                if ($stmt = $this->_db->prepare("SELECT
+                        password
+				      FROM
+				        users
+				      WHERE
+				        id = ? LIMIT 1"))
+                {
+                    $stmt->bind_param('i', $user_id);
+                    $stmt->execute();
+                    $stmt->store_result();
+
+                    if ($stmt->num_rows == 1)
+                    {
+                        // If the user exists get variables from result.
+                        $stmt->bind_result($password);
+                        $stmt->fetch();
+                        $login_check = hash('sha512', $password . $user_browser);
+
+                        if ($login_check == $login_string)
+                        {
+                            // Logged in
+                            return true;
+                        } else {
+                            // Not logged in
+                            return false;
+                        }
+                    } else {
+                        // Not logged in
+                        return false;
+                    }
+                } else {
+                    // Could not prepare statement
+                    die("CheckLogin: can not prepare string.");
+                    /*header("Location: ../error.php?err=Database error: cannot prepare statement");
+                    exit();*/
+                }
+            } else {
+                // Not logged in
+                return false;
+            }
         }
 
     }
