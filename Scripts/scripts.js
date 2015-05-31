@@ -47,7 +47,7 @@ function CheckRegForm(form) {
     }
     //form.email.value.indexOf('@') == -1
     var validChars = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
-    if(!validChars.test(form.email.value) || form.email.value == "") {
+    if (!validChars.test(form.email.value) || form.email.value == "") {
         alert('Error: мыло то забыл написать!');
         form.email.focus();
         return false;
@@ -60,35 +60,42 @@ function CheckRegForm(form) {
         return false;
     }
 
-    if(form.password.value == ""){
+    if (form.password.value == form.username.value) {
+        alert("Error: Password must differ from Username");
+        form.password.focus();
+        return false;
+    }
+
+    return CheckPassword(form) !== false;
+}
+
+function formhash(form) {
+    // Create a new element input, this will be our hashed password field.
+    var p = document.createElement("input");
+
+    // Add the new element to our form.
+    form.appendChild(p);
+    p.name = "p";
+    p.type = "hidden";
+    p.value = hex_sha512(form.password.value);
+
+    // Make sure the plaintext password doesn't get sent.
+    form.password.value = "";
+
+    // Finally submit the form.
+    form.submit();
+
+    return true;
+}
+
+function CheckPassword(form) {
+    if (form.password.value == "") {
         alert("Error: пароль не может быть пустым. Это же пароль!");
         form.password.focus();
         return false;
     }
     if (form.password.value == form.confPassword.value) {
-        if (form.password.value == form.username.value) {
-            alert("Error: Password must be different from Username!");
-            form.password.focus();
-            return false;
-        }
-        validChars = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;///[0-9]/;
-        /*if(form.password.value.length < 6) {
-         alert("Error: Password must contain at least six characters!");
-         form.password.focus();
-         return false;
-         }
-         validChars = /[a-z]/;
-         if(!validChars.test(form.password.value)) {
-         alert("Error: password must contain at least one lowercase letter (a-z)!");
-         form.password.focus();
-         return false;
-         }
-         validChars = /[A-Z]/;
-         if(!validChars.test(form.password.value)) {
-         alert("Error: password must contain at least one uppercase letter (A-Z)!");
-         form.password.focus();
-         return false;
-         }*/
+        validChars = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
         if (!validChars.test(form.password.value)) {
             alert("Error: password must contain at least:\n one number (0-9);\n one lowercase letter (a-z);\n" +
             " one uppercase letter (A-Z)!");
@@ -100,7 +107,6 @@ function CheckRegForm(form) {
         form.confPassword.focus();
         return false;
     }
-
 
     // Create a new element input, this will be our hashed password field.
     var p = document.createElement("input");
@@ -117,28 +123,6 @@ function CheckRegForm(form) {
 
     // Finally submit the form.
     form.submit();
-
-    return true;
-}
-
-//Hash password to send to server
-function formhash(form)
-{
-    // Create a new element input, this will be our hashed password field.
-    var p = document.createElement("input");
-
-    // Add the new element to our form.
-    form.appendChild(p);
-    p.name = "p";
-    p.type = "hidden";
-    p.value = hex_sha512(form.password.value);
-
-    // Make sure the plaintext password doesn't get sent.
-    form.password.value = "";
-
-    // Finally submit the form.
-    form.submit();
-
     return true;
 }
 

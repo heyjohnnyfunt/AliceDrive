@@ -79,6 +79,7 @@ namespace MainWebSite {
             $data = strip_tags($data);
             $data = stripslashes($data);
             $data = htmlspecialchars($data);
+            $data = nl2br($data);
             return $data;
         }
 
@@ -109,7 +110,7 @@ namespace MainWebSite {
                 WHERE
                   username = ? LIMIT 1")
             ) {
-                $stmt->bind_param('s', $username);  // Bind "$username" to parameter.
+                $stmt->bind_param('s', $username);
                 $stmt->execute();
                 $stmt->store_result();
 
@@ -117,15 +118,14 @@ namespace MainWebSite {
                 $stmt->bind_result($user_id, $db_password, $salt, $firstname, $lastname);
                 $stmt->fetch();
 
-
                 // hash the password with the unique salt.
                 $password = hash('sha512', $password . $salt);
                 if ($stmt->num_rows == 1) {
                     // If the user exists, we check if the account is locked
                     // from too many login attempts
-                    if ($this->CheckBruteforce($user_id) == true) {
+                    if ($this->CheckBruteforce($user_id) === true) {
                         // Account is locked
-                        // Send an email to user saying their account is locked
+                        // Send an email to user
                         return false;
                     } else {
                         // Check if the password in the database matches
@@ -174,7 +174,6 @@ namespace MainWebSite {
 
         function CheckBruteforce($user_id)
         {
-            // Get timestamp of current time
             $now = time();
             // All login attempts are counted from the past 2 hours.
             $valid_attempts = $now - (2 * 60 * 60);

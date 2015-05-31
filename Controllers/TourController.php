@@ -21,7 +21,6 @@ namespace MainWebSite {
 
                 $this->view->set('header', 'Где нас можно услышать');
                 $this->view->set('page_title', 'Tours');
-                $this->view->set('site_title', 'Alice Drive');
 
                 $this->view->output('TourView.php');
 

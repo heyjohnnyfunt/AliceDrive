@@ -2,6 +2,7 @@
 
     <div id="content-login" class="content">
 
+        <?php if(isset($message)) echo $message; ?>
         <a href="/user">Don't Have An Account? &rarr;</a>
 
         <form id="loginForm" class="loginForm" name="loginForm" method="POST">

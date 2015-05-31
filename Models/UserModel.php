@@ -11,35 +11,6 @@ namespace MainWebSite;
 
 class UserModel extends BaseModel
 {
-    function AddUser()
-    {
-        $username = $this->_db->real_escape_string($this->transform_input($_POST['username']));
-        $firstname = $this->_db->real_escape_string($this->transform_input($_POST['firstname']));
-        $lastname = $this->_db->real_escape_string($this->transform_input($_POST['lastname']));
-        $email = $this->_db->real_escape_string($this->transform_input($_POST['email']));
-        $password = $this->_db->real_escape_string($this->transform_input($_POST['password']));
-
-        if (empty($username) || empty($email) || empty($password))
-            return '<p class="error">Check your data</p>';
-
-        $sql = "INSERT INTO
-                          users (username, email, firstname, lastname, password)
-                      VALUES
-                          ('$username','$email','$firstname','$lastname', '$password')";
-
-        $result = $this->_db->query($sql);
-
-        if ($result) {
-            $message = '<p class="error">User account was created.</p>';
-        } else {
-            $message = '<p class="error">User account could not be created because: ' .
-                $this->_db->error . '</p>';
-            $message .= '<p>' . $sql . '</p>';
-        }
-
-        return $message;
-    }
-
     function RegUser()
     {
         if (!isset($_POST['username'], $_POST['email'], $_POST['p']))
@@ -80,29 +51,24 @@ class UserModel extends BaseModel
         } else
             $message .= '<p class="error">Database error</p>';
 
-
-        // TODO:
-        // We'll also have to account for the situation where the user doesn't have
-        // rights to do registration, by checking what type of user is attempting to
-        // perform the operation.
-
         if (empty($message)) {
             $random_salt = hash('sha512', uniqid(openssl_random_pseudo_bytes(16), TRUE));
             $password = hash('sha512', $password . $random_salt);
 
-            // Insert the new user into the database
-            if ($insert_stmt = $this->_db->prepare("INSERT INTO
+            if ($insert_stmt = $this->_db->prepare("
+                        INSERT INTO
                           users (username, email, password, salt, firstname, lastname)
-                        VALUES (?, ?, ?, ?, ?, ?)")
+                        VALUES
+                          (?, ?, ?, ?, ?, ?)")
             ) {
                 $params = array(&$username, &$email, &$password, &$random_salt, &$firstname, &$lastname);
                 call_user_func_array(array($insert_stmt, "bind_param"), array_merge(array('ssssss'), $params));
 
                 if (!$insert_stmt->execute()) {
-                    return 'Insertion failed.';
+                    return '<p class="error">Insertion failed.</p>';
                 } else
-                    $message = 'Olala, у нас пополнение! Поздравляю, Вы успешно зарегистрировались.</p>' .
-                        '<p class="error">Осталось только залогиниться..';
+                    $message = '<p class="error">Olala, у нас пополнение! Поздравляю, Вы успешно зарегистрировались.</p>' .
+                        '<p class="error">Осталось только залогиниться..</p>';
             }
         }
         return $message;
@@ -113,27 +79,36 @@ class UserModel extends BaseModel
     {
         if (!$this->CheckLogin()) return 'U better login first';
 
-        $info = array();
-
-        if($stmt = $this->_db->prepare("SELECT
-                    email,
+        if ($stmt = $this->_db->prepare("SELECT
                     firstname,
-                    lastname
+                    lastname,
+                    email
                   FROM
                     users
                   WHERE
-                    username = ?")){
+                    username = ?")
+        ) {
+            $params = array();
+            $result = array();
+
             $stmt->bind_param('s', $_SESSION['username']);
             $stmt->execute();
-            $stmt->store_result();
 
-            if ($stmt->num_rows > 1) {
-                return false;
-            } else{
-                call_user_func_array(array($stmt, "bind_result"), $info);
+            $meta = $stmt->result_metadata();
+            while ($field = $meta->fetch_field()) {
+                $params[] = &$result[$field->name];
             }
-        } else
-            return false;
+            call_user_func_array(array($stmt, 'bind_result'), $params);
+            if ($stmt->error) return false;
+
+            while ($stmt->fetch()) {
+                foreach ($result as $key => $val)
+                    $c[$key] = $val;
+                $params = $c;
+            }
+            return $params;
+        }
+        return false;
     }
 
     function UpdateUser()
@@ -154,8 +129,12 @@ class UserModel extends BaseModel
             $stmt->store_result();
 
             if ($stmt->num_rows > 1) {
-                return '<p class="error">Too many users with such username. Call admin.</p>';
-            } else $stmt->bind_result($user_id);
+                $message .= '<p class="error">Two much users with such username. Call to admin.</p>';
+            } else if ($stmt->num_rows == 1) {
+                $stmt->bind_result($user_id);
+                $stmt->fetch();
+            } else
+                $message .= '<p class="error">Что-то пошло не так.. Похоже, мы потеряли вас в своей базу :(</p>';
         } else
             $message .= '<p class="error">Database error</p>';
 
@@ -163,6 +142,7 @@ class UserModel extends BaseModel
         $firstname = filter_input(INPUT_POST, 'firstname', FILTER_SANITIZE_STRING);
         $lastname = filter_input(INPUT_POST, 'lastname', FILTER_SANITIZE_STRING);
         $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+        $email = filter_var($email, FILTER_VALIDATE_EMAIL);
 
         if (!filter_var($email, FILTER_VALIDATE_EMAIL))
             $message .= '<p class="error">The email address you entered is not valid</p>';
@@ -172,8 +152,7 @@ class UserModel extends BaseModel
                   FROM
                     users
                   WHERE
-                    username = ? OR email = ?
-                  LIMIT 1")
+                    username = ? OR email = ?")
         ) {
             $stmt->bind_param('ss', $username, $email);
             $stmt->execute();
@@ -185,7 +164,6 @@ class UserModel extends BaseModel
         } else
             $message .= '<p class="error">Database error</p>';
 
-
         if (empty($message)) {
             if ($update_stmt = $this->_db->prepare("UPDATE
                           users SET
@@ -196,11 +174,76 @@ class UserModel extends BaseModel
                         WHERE
                           id = $user_id")
             ) {
-                $message = 'Изменения сохранены';
+                $message = '<p class="error">Изменения сохранены</p>';
                 $params = array(&$username, &$email, &$firstname, &$lastname);
                 call_user_func_array(array($update_stmt, "bind_param"), array_merge(array('ssss'), $params));
                 if (!$update_stmt->execute()) {
-                    $message .= 'Insertion failed.';
+                    $message .= '<p class="error">Insertion failed.</p>';
+                } else {
+                    $_SESSION['username'] = $username;
+                    $_SESSION['firstname'] = $firstname;
+                    $_SESSION['lastname'] = $lastname;
+                }
+            } else {
+                $message = '<p class="error">Ошибка, видимо, у нас. Свяжитесь с админом :(</p>';
+            }
+        }
+        return $message;
+    }
+
+    function UpdatePassword()
+    {
+        if (!$this->CheckLogin()) return 'U better login first';
+
+        $message = '';
+
+        $password = filter_input(INPUT_POST, 'p', FILTER_SANITIZE_STRING);
+
+        if (strlen($password) != 128)
+            $message .= '<p class="error">Invalid password configuration. Make sure Javascript execution is allowed in your browser.</p>';
+
+        if ($stmt = $this->_db->prepare("SELECT
+                    id
+                  FROM
+                    users
+                  WHERE
+                    username = ?")
+        ) {
+            $stmt->bind_param('s', $_SESSION['username']);
+            $stmt->execute();
+            $stmt->store_result();
+
+            if ($stmt->num_rows > 1) {
+                $message .= '<p class="error">Two much users with such username. Call to admin.</p>';
+            } else if ($stmt->num_rows == 1) {
+                $stmt->bind_result($user_id);
+                $stmt->fetch();
+            } else
+                $message .= '<p class="error">Что-то пошло не так.. Похоже, мы потеряли вас в своей базу :(</p>';
+        } else
+            $message .= '<p class="error">Database error</p>';
+
+        if (empty($message)) {
+            $random_salt = hash('sha512', uniqid(openssl_random_pseudo_bytes(16), TRUE));
+            $password = hash('sha512', $password . $random_salt);
+
+            if ($insert_stmt = $this->_db->prepare("UPDATE
+                          users
+                        SET
+                          password = ?,
+                          salt = ?
+                        WHERE
+                          id = $user_id")
+            ) {
+                $params = array(&$password, &$random_salt);
+                call_user_func_array(array($insert_stmt, "bind_param"), array_merge(array('ss'), $params));
+
+                if (!$insert_stmt->execute()) {
+                    return '<p class="error">Insertion failed</p>';
+                } else{
+                    $message = '<p class="error">Пароль успешно изменен</p>';
+                    $user_browser = $_SERVER['HTTP_USER_AGENT'];
+                    $_SESSION['login_string'] = hash('sha512', $password . $user_browser);
                 }
             }
         }

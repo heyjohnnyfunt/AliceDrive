@@ -20,7 +20,6 @@ class UserController extends BaseController
             }
             $this->view->set('header', 'Присоединяйся к нам');
             $this->view->set('page_title', 'Registration');
-            $this->view->set('site_title', 'Alice Drive');
 
             if (isset($_POST['RegistrationButtonClick'])) {
                 $this->view->set('message', $this->model->RegUser());
@@ -52,20 +51,24 @@ class UserController extends BaseController
 
             $this->view->set('header', 'Личный кабинет');
             $this->view->set('page_title', 'Account');
-            $this->view->set('site_title', 'Alice Drive');
 
-            if(!$this->GetUserInfo()) {
+            if(isset($_POST['SaveChangesButtonClick'])){
+                $this->view->set('message', $this->model->UpdateUser());
+            }
+
+            if(isset($_POST['SavePasswordChangesButtonClick'])){
+                $this->view->set('message', $this->model->UpdatePassword());
+            }
+
+            $info = $this->model->GetUserInfo();
+            if($info === false) {
                 $this->view->set('message', 'Ошибка в получении данных');
             }
             else{
                 $this->view->set('username', $_SESSION['username']);
-                $this->view->set('firstname', $_SESSION['firstname']);
-                $this->view->set('lastname', $_SESSION['lastname']);
-                $this->view->set('email', 'na');
-            }
-
-            if(isset($_POST['SaveChangesButtonClick'])){
-                $this->view->set('message', $this->model->UpdateUser());
+                $this->view->set('firstname', $info['firstname']);
+                $this->view->set('lastname', $info['lastname']);
+                $this->view->set('email', $info['email']);
             }
 
             $this->view->output('AccountView.php');

@@ -1,6 +1,6 @@
 <div id="content-reg" class="content">
 
-    <?php if (isset($message)) echo '<p class="error">' . $message . '</p>'; ?>
+    <?php if (isset($message)) echo $message; ?>
 
     <form method="POST">
         <input type="submit" name="LogoutButtonClick" id="LogoutButton" class="button" value="Log out">
@@ -30,7 +30,7 @@
         </fieldset>
 
         <input type="submit" name="SaveChangesButtonClick" id="SaveChangesButton" class="button"
-               onclick="return CheckRegForm(this)" value="Сохранить изменения">
+               onclick="return CheckRegForm(this.form)" value="Сохранить изменения">
     </form>
 
     <form id="regForm" name="regForm" method="POST">
@@ -46,7 +46,7 @@
         </fieldset>
 
         <input type="submit" name="SavePasswordChangesButtonClick" id="SaveChangesButton" class="button"
-               onclick="return CheckRegForm(this)" value="Сохранить изменения">
+               onclick="return CheckPassword(this.form)" value="Сохранить пароль">
 
     </form>
 </div>

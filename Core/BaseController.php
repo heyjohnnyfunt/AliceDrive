@@ -25,11 +25,11 @@ namespace MainWebSite {
             $this->model = new $modelName();
 
             $this->view = new BaseView(BASE_PATH . D_VIEW . $this->viewBaseName);
+            $this->view->set('site_title', 'Alice Drive');
 
             if (isset($_POST['LoginButtonClick'])) {
                 $result = $this->Login();
                 if ($result === true) {
-//                    echo '<script>alert("username = ' . $username .' password = ' . $password . '");</script>';
                     header('Location: /');
                     exit();
                 }
@@ -57,7 +57,7 @@ namespace MainWebSite {
                 if ($this->model->Login($username, $password)) {
                     return true;
                 } else {
-                    return 'Вы что-то явно ввели не так...';
+                    return '<p class="error">Вы что-то явно ввели не так...</p>';
                 }
             } else {
                 // The correct POST variables were not sent to this page.

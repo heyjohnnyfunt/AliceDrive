@@ -1,8 +1,6 @@
-<script type="text/javascript" src="/Scripts/sha512.js"></script>
-
 <div id="content-login-page" class="content">
 
-    <?php if (isset($message)) echo '<p class="error">' . $message . '</p>'; ?>
+    <?php if (isset($message)) echo $message; ?>
 
     <a href="#" id="showReg">Don't Have An Account? &rarr;</a>
 
@@ -28,7 +26,7 @@
 
 <div id="content-reg" class="content">
 
-    <?php if (isset($message))  echo '<p class="error">' . $message . '</p>'; ?>
+    <?php if (isset($message)) echo $message; ?>
 
     <a href="#" id="showLogin">&larr; Already have an account?</a>
 

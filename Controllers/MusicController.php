@@ -19,7 +19,6 @@ class MusicController extends BaseController{
             $this->view->set('header', 'Что играем');
 
             $this->view->set('page_title', 'Music');
-            $this->view->set('site_title', 'Alice Drive');
 
             $this->view->output('MusicView.php');
 

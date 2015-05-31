@@ -20,7 +20,6 @@ namespace MainWebSite {
 
                 $this->view->set('header', 'Что у нас нового');
                 $this->view->set('page_title', 'News');
-                $this->view->set('site_title', 'Alice Drive');
 
                 $this->view->output('NewsView.php');
 
@@ -47,7 +46,6 @@ namespace MainWebSite {
                 else
                 {
                     $this->view->set('page_title', 'News');
-                    $this->view->set('site_title', 'Alice Drive');
                     $this->view->set('date', '12.12.12');
                     $this->view->set('header', 'Мысли успешных людей');
                     $this->view->set('body', 'Не все могут прочесть эту новость.
