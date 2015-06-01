@@ -43,7 +43,7 @@
     } else { ?>
 
         <h3>Welcome!</h3>
-        <p>Sadly, we have no audio and video materials :(</p>
+        <p>Sadly, we have no audio materials :(</p>
 
     <?php } ?>
 </div>
