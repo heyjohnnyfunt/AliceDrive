@@ -36,9 +36,6 @@ namespace MainWebSite {
                 else $this->view->set('message', $result);
             }
 
-            /*if(isset($_POST['LogoutButtonClick'])){
-                $this->Logout();
-            }*/
         }
 
         function index() {}
@@ -69,8 +66,6 @@ namespace MainWebSite {
         {
             include_once BASE_PATH . '/config/functions.php';
 
-//            session_start();
-//            sec_session_start();
             // Unset all session values
             $_SESSION = array();
             // get session parameters

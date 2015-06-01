@@ -26,9 +26,7 @@ namespace MainWebSite {
             }
         }
 
-        public function get_data()
-        {
-        }
+        public function get_data() {}
 
         protected function setSql($sql)
         {
@@ -83,20 +81,6 @@ namespace MainWebSite {
             return $data;
         }
 
-        function CheckUser()
-        {
-            $username = $this->_db->real_escape_string($this->transform_input($_POST['username']));
-            $password = $this->_db->real_escape_string($this->transform_input($_POST['password']));
-            if (empty($username) || empty($password))
-                return '<p class="error">Check your data</p>';
-
-            $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
-            if ($this->_db->query($sql)) {
-                $_SESSION['username'] = $username;
-                return true;
-            } else return false;
-        }
-
         function Login($username, $password)
         {
             if ($stmt = $this->_db->prepare("SELECT
@@ -119,7 +103,8 @@ namespace MainWebSite {
                 $stmt->fetch();
 
                 // hash the password with the unique salt.
-                $password = hash('sha512', $password . $salt);
+                $newpassword = hash('sha512', $password . $salt);
+
                 if ($stmt->num_rows == 1) {
                     // If the user exists, we check if the account is locked
                     // from too many login attempts
@@ -130,13 +115,32 @@ namespace MainWebSite {
                     } else {
                         // Check if the password in the database matches
                         // the password the user submitted.
-                        if ($db_password == $password) {
+                        if ($db_password == $newpassword) {
                             // Get the user-agent string of the user.
                             $user_browser = $_SERVER['HTTP_USER_AGENT'];
 
                             // XSS protection as we might print this value
                             $user_id = preg_replace("/[^0-9]+/", "", $user_id);
                             $username = preg_replace("/[^a-zA-Z0-9_-]+/", "", $username);
+
+                            $random_salt = hash('sha512', uniqid(openssl_random_pseudo_bytes(16), TRUE));
+                            $password = hash('sha512', $password . $random_salt);
+
+                            if ($insert_stmt = $this->_db->prepare("UPDATE
+                                  users
+                                SET
+                                  password = ?,
+                                  salt = ?
+                                WHERE
+                                  id = $user_id")
+                            ) {
+                                $params = array(&$password, &$random_salt);
+                                call_user_func_array(array($insert_stmt, "bind_param"), array_merge(array('ss'), $params));
+
+                                if (!$insert_stmt->execute()) {
+                                    return false;
+                                }
+                            }
 
                             $_SESSION['user_id'] = $user_id;
                             $_SESSION['username'] = $username;
@@ -145,6 +149,7 @@ namespace MainWebSite {
                             $_SESSION['login_string'] = hash('sha512', $password . $user_browser);
 
                             return true;
+
                         } else {
                             // If password is not correct, record this attempt in the database
                             $now = time();
@@ -229,14 +234,11 @@ namespace MainWebSite {
 
                         if ($login_check == $login_string)
                         {
-                            // Logged in
                             return true;
                         } else {
-                            // Not logged in
                             return false;
                         }
                     } else {
-                        // Not logged in
                         return false;
                     }
                 } else {

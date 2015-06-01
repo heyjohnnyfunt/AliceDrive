@@ -71,12 +71,14 @@ footer {
     background-color: #573855;
     transition: all 0.25s ease-in-out;
     color: #ffffff;
+    outline: none;
 }
 
 .button:active, .button-active {
     background-color: #373855;
     position: relative;
     top: 1px;
+    outline: none;
 }
 
 .input {
@@ -97,6 +99,7 @@ footer {
     -webkit-box-shadow: 0 0 3px 0 #373855;
     -moz-box-shadow: 0 0 3px 0 #373855;
     box-shadow: 0 0 3px 0 #373855;
+    outline: none;
 }
 
 .delete-button {
@@ -130,38 +133,44 @@ footer {
     padding: 10px 15px;
 }
 
-/* KEYFRAMES */
-
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 1;
-    }
+#search{
+    float:right;
 }
 
-@keyframes fadeInUp {
-    0% {
-        opacity: 0;
-        transform: translate3d(0, 100%, 0);
-    }
-
-    100% {
-        opacity: 1;
-        transform: none;
-    }
+#search .searchInput{
+    font-size: 1em;
+    padding: 2px;
+    font-family: inherit;
+    background: #000000;
+    color: white;
+    border: 1px #373855 solid;
+    border-radius: 4px 0 0 4px;
+    transition: all 0.25s ease-in-out;
 }
 
-@keyframes fadeInRight {
-    0% {
-        opacity: 0;
-        transform: translate3d(100%, 0, 0);
-    }
+#search .searchInput:focus{
+    background: #373855;
+    border: 1px #573855 solid;
+    outline: none;
+    transition: all 0.25s ease-in-out;
+}
 
-    100% {
-        opacity: 1;
-        transform: none;
-    }
+#search .search-icon{
+    cursor: pointer;
+    border: none;
+    float: right;
+    width: 2em;
+    height: 1.9em;
+    line-height: 2em;
+    display: inline-block;
+    outline: none;
+    background: #373855 url("../Images/icons/Search.png") no-repeat center;
+    background-size: 1.7em 1.5em;
+    transition: all 0.25s ease-in-out;
+    border-radius: 0 4px 4px 0;
+}
+
+#search .search-icon:hover{
+    transition: all 0.25s ease-in-out;
+    background-color: #573855;
 }

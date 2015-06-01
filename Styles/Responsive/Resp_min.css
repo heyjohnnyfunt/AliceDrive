@@ -43,6 +43,10 @@
     float: right;
 }
 
+#search{
+    float: left;
+}
+
 /* CONTENT stylesheet*/
 
 .content{

@@ -1,14 +1,6 @@
 <link rel="stylesheet" href="../Styles/Community.css" type="text/css">
 <script>
     var main = function () {
-        /*$('.button').click(function () {
-         var post = $('.textarea').val();
-         $('<li>').text(post).prependTo('.posts');
-         $('.textarea').val('');
-         $('.counter').text(140);
-         $('.button').attr('disabled', true);
-         });*/
-
         var count = 500;
         $('.textarea').keyup(function () {
             var postLength = $(this).val().length;
@@ -16,13 +8,13 @@
             $('.counter').text(charactersLeft);
 
             if (charactersLeft < 0)
-                $('.button').attr('disabled', true);
+                $('#postButton').attr('disabled', true);
             else if (charactersLeft === count)
-                $('.button').attr('disabled', true);
+                $('#postButton').attr('disabled', true);
             else
-                $('.button').attr('disabled', false);
+                $('#postButton').attr('disabled', false);
         });
-        $('.button').attr('disabled', true);
+        $('#postButton').attr('disabled', true);
     }
 
     $(document).ready(main);
@@ -33,7 +25,7 @@
     <form method="POST">
         <textarea name="messageTextArea" class="textarea" rows="2" placeholder="Уотс он йор майнд? :)"></textarea>
 
-        <div class="pull-right">
+        <div> <!--class="pull-right"-->
             <p class="counter">500</p>
             <input type="submit" name="SendMessageButtonClick" id="postButton" class="button" Value="Отправить">
         </div>
