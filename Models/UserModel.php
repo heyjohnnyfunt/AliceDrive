@@ -14,7 +14,7 @@ class UserModel extends BaseModel
     function RegUser()
     {
         if (!isset($_POST['username'], $_POST['email'], $_POST['p']))
-            return 'Что-то пошло не так. Попробуйте повторно зарегистрироваться.';
+            return '<p class="error">Что-то пошло не так. Попробуйте повторно зарегистрироваться.</p>';
 
         $message = '';
 

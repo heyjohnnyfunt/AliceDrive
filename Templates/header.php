@@ -11,10 +11,14 @@
 
     </div>
     <div id="search">
-        <form method="post">
-            <input type="text" name="searchInput" class="searchInput">
+        <!--<form method="post">
+            <label for="searchInput"></label>
+            <input type="text" id="searchInput" name="searchInput" class="searchInput">
             <input type="submit" name="SearchButtonClick" class="search-icon" value="">
-        </form>
+        </form>-->
+        <a href="/search">
+            <div class="search-icon"></div>
+        </a>
     </div>
 
     <a href="/">
@@ -22,6 +26,5 @@
     </a>
 
     <?php include('navigation.php') ?>
-
 
 </header>

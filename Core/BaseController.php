@@ -7,7 +7,6 @@
  */
 namespace MainWebSite {
     defined('ACCESS_ALLOWED') or die('Restricted Access');
-    use mysqli;
 
     class BaseController
     {
@@ -34,6 +33,10 @@ namespace MainWebSite {
                     exit();
                 }
                 else $this->view->set('message', $result);
+            }
+
+            if (isset($_POST['SearchButtonClick'])){
+                header('Location: /search');
             }
 
         }

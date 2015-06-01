@@ -12,7 +12,7 @@ html {
 body {
     font-family: Quicksand, Futurica, Arial, monospace, sans-serif;
     margin: 0;
-    min-width: 200px;
+    min-width: 300px;
     height: 100%;
 }
 
@@ -134,7 +134,11 @@ footer {
 }
 
 #search{
-    float:right;
+    float: right;
+}
+
+#searchWide{
+    float: right;
 }
 
 #search .searchInput{
@@ -148,20 +152,31 @@ footer {
     transition: all 0.25s ease-in-out;
 }
 
-#search .searchInput:focus{
-    background: #373855;
-    border: 1px #573855 solid;
+.searchInputWide{
+    clear :both;
+    font-size: 1.5em;
+    padding: 5px;
+    font-family: inherit;
+    background: #000000;
+    color: white;
+    border: 1px #373855 solid;
+    border-radius: 4px 0 0 4px;
+    transition: all 0.25s ease-in-out;
+}
+
+#search .searchInput:focus, .searchInputWide:focus{
+    background: #573855;
+    /*border: 1px # solid;*/
     outline: none;
     transition: all 0.25s ease-in-out;
 }
 
 #search .search-icon{
+    float: right;
     cursor: pointer;
     border: none;
-    float: right;
     width: 2em;
     height: 1.9em;
-    line-height: 2em;
     display: inline-block;
     outline: none;
     background: #373855 url("../Images/icons/Search.png") no-repeat center;
@@ -170,7 +185,21 @@ footer {
     border-radius: 0 4px 4px 0;
 }
 
-#search .search-icon:hover{
+.search-icon{
+    float: right;
+    border: none;
+    cursor: pointer;
+    width: 3.3em;
+    height: 3.1em;
+    display: inline-block;
+    outline: none;
+    background: #373855 url("../Images/icons/Search.png") no-repeat center;
+    background-size: 1.7em 1.5em;
+    transition: all 0.25s ease-in-out;
+    border-radius: 0 8px 8px 0;
+}
+
+#search .search-icon:hover, .search-icon:hover{
     transition: all 0.25s ease-in-out;
     background-color: #573855;
 }

@@ -63,7 +63,7 @@
 
 .article{
     display: block;
-    width: 100%;
+    width: inherit;
 }
 .article article:hover{
     transform: scale(1.0);

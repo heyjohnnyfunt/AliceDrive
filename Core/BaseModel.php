@@ -17,10 +17,8 @@ namespace MainWebSite {
         public function __construct()
         {
             require('Credentials.php');
-            # Database connections
             $this->_db = new mysqli($host, $user, $password, $database);
 
-            // Check connection
             if ($this->_db->connect_error) {
                 die("Connection failed: " . $this->_db->connect_error);
             }
@@ -180,7 +178,7 @@ namespace MainWebSite {
         function CheckBruteforce($user_id)
         {
             $now = time();
-            // All login attempts are counted from the past 2 hours.
+            // All login attempts from past 2 hours
             $valid_attempts = $now - (2 * 60 * 60);
             if ($stmt = $this->_db->prepare("SELECT
                                     time

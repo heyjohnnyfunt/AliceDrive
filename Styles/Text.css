@@ -40,7 +40,7 @@ p {
 
 .article article:hover {
     background: rgba(37, 38, 55, 1);
-    transform: scale(1.1);
+    transform: scale(1.05);
     transition: all 0.25s ease-in-out;
 }
 
