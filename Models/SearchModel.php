@@ -10,6 +10,26 @@ namespace MainWebSite;
 
 
 class SearchModel extends BaseModel{
+
+    private function bind_result_array($stmt)
+    {
+        $meta = $stmt->result_metadata();
+        $result = array();
+        while ($field = $meta->fetch_field())
+        {
+            $result[$field->name] = NULL;
+            $params[] = &$result[$field->name];
+        }
+
+        call_user_func_array(array($stmt, 'bind_result'), $params);
+        return $result;
+    }
+
+    private function getCopy($row)
+    {
+        return array_map(create_function('$a', 'return $a;'), $row);
+    }
+
     function SearchNews($tag)
     {
         $tag = filter_var($tag, FILTER_SANITIZE_STRING);
@@ -28,38 +48,29 @@ class SearchModel extends BaseModel{
                     news
                 WHERE
                     title LIKE ?";
-
         if ($stmt = $this->_db->prepare($sql)) {
             $stmt->bind_param('s', $param);
             $stmt->execute();
+            $row = $this->bind_result_array($stmt);
 
-            $params = array();
-            $result = array();
-
-            $meta = $stmt->result_metadata();
-            while ($field = $meta->fetch_field()) {
-                $params[] = &$result[$field->name];
+            $countries = array();
+            if(!$stmt->error)
+            {
+                while($stmt->fetch()){
+                    $countries[$row['id']] = $this->getCopy($row);
+                }
             }
-            call_user_func_array(array($stmt, 'bind_result'), $params);
-            if ($stmt->error) return false;
-
-            while ($stmt->fetch()) {
-                foreach ($result as $key => $val)
-                    $c[$key] = $val;
-                $params = $c;
-            }
-            return $params;
-
-
+            return $countries;
         }
+        return false;
     }
 
-    function SearchMusic()
+    function SearchMusic($tag)
     {
 
     }
 
-    function SearchTours()
+    function SearchTours($tag)
     {
 
     }

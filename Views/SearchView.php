@@ -34,8 +34,36 @@
     } else { ?>
 
         <div class="bigDescription">
-            <p>Введите что-нибудь в строку поиска справа</p>
+            <p>Ничего не найдено</p>
         </div>
 
     <?php } ?>
+
+    <?php
+    if ($concerts > 0) {
+        foreach ($concerts as $topic) { ?>
+            <div class="article tourArticle">
+                <article>
+                    <header>
+                        <h3>Где: <?php echo $topic['place']; ?></h3>
+
+                        <p>Когда:
+                            <time><?php echo $topic['date']; ?></time>
+                        </p>
+                    </header>
+                    <?php echo $topic['body'];  ?>
+
+                </article>
+            </div>
+        <?php
+        }
+    } else { ?>
+
+        <div class="bigDescription">
+            <p>Ничего не найдено</p>
+        </div>
+
+    <?php } ?>
+
+
 </div>
