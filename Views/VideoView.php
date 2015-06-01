@@ -12,7 +12,7 @@
 </script>
 
 
-
+er
 <div class="content">
     <?php
     if ($articles > 0) {
