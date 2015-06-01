@@ -33,7 +33,7 @@ p {
     margin: 0;
 }
 
-.article a {
+.article, .article a {
     text-decoration: none;
     color: #FFFFFF;
 }
