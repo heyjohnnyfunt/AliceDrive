@@ -7,10 +7,15 @@
                     <header>
                         <h3><?php echo $topic['name']; ?></h3>
                         <div>
-                            <iframe width="100%" height="140" scrolling="no" frameborder="no"
+                          <!--  <iframe width="100%" height="140" scrolling="no" frameborder="no"
                                     src="<?php echo $topic['source']; ?>">
 
-                            </iframe>
+                            </iframe>-->
+                            <audio controls>
+                                <source src="<?php echo $topic['source']; ?>" type="audio/mpeg">
+
+                                Your browser does not support the audio element.
+                            </audio>
                         </div>
                     </header>
 
@@ -21,7 +26,7 @@
     } else { ?>
 
         <h3>Welcome!</h3>
-        <p>We currently do not have any tours :(</p>
+        <p>Sadly, we have no audio and video materials :(</p>
 
     <?php } ?>
 </div>
