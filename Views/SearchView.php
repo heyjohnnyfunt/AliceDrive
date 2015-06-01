@@ -4,12 +4,13 @@
         <input type="submit" name="SearchResultButtonClick" class="search-icon" value="">
     </form>
 </div>
+<div class="">
 
-<div class="left-col ">
+<div class="bigDescription ">
     <?php
-    if ($articles > 0) {
+    if (count($articles) > 0 && $articles > 0) {
         ?>
-        <h3 class="error bigDescription">Что нашлось в новостях:</h3>
+        <h3 class="error">Что нашлось в новостях:</h3>
         <?php
         foreach ($articles as $topic) { ?>
             <div class="article tourArticle">
@@ -32,10 +33,59 @@
         <?php
         }
     } else { ?>
-
-        <div class="bigDescription">
-            <p>Введите что-нибудь в строку поиска справа</p>
-        </div>
-
+        <h3 class="error">По новостям ничего не найдено</h3>
     <?php } ?>
+
+    <?php
+    if (count($concerts) > 0 && $concerts > 0) {
+        ?>
+        <h3 class="error">Что нашлось по концертам:</h3>
+        <?php
+        foreach ($concerts as $topic) { ?>
+            <div class="article tourArticle">
+                <article>
+                    <header>
+                        <h3>Где: <?php echo $topic['place']; ?></h3>
+
+                        <p>Когда:
+                            <time><?php echo $topic['date']; ?></time>
+                        </p>
+                    </header>
+                    <?php echo $topic['body'];  ?>
+
+                </article>
+            </div>
+        <?php
+        }
+    } else { ?>
+        <h3 class="error">По концертам ничего не найдено</h3>
+    <?php } ?>
+
+    <?php
+    if (count($songs) > 0 && $songs > 0) {
+        ?>
+        <h3 class="error">Что нашлось по музыке:</h3>
+        <?php
+        foreach ($songs as $topic) { ?>
+            <a class="tourArticle">
+                <article>
+                    <header>
+                        <h3><?php echo $topic['name']; ?></h3>
+                        <div>
+                            <audio controls>
+                                <source src="<?php echo $topic['source']; ?>" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </header>
+
+                </article>
+            </a>
+        <?php
+        }
+    } else { ?>
+        <h3 class="error">По музыке ничего не найдено</h3>
+    <?php } ?>
+
+</div>
 </div>

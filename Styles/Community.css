@@ -27,6 +27,7 @@
 .ChatBlock p {
     padding: 0;
     font-size: 1em;
+    word-break: break-all;
 }
 
 .ChatBlock span {

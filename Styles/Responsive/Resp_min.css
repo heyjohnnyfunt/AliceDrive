@@ -54,7 +54,7 @@
 }
 
 .left-col{
-    width: 80%;
+    width: inherit;
     padding: 0 5%;
 }
 .right-col{
