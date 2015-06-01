@@ -1,7 +1,8 @@
 <!-- JavaScript Piece of code to stop music and reset to zero -->
 <script>window.addEventListener("play", function(evt)
     {
-        if(window.$_currentlyPlaying)
+
+        if(window.$_currentlyPlaying && window.$_currentlyPlaying!=evt.target)
         {
             window.$_currentlyPlaying.pause();
             window.$_currentlyPlaying.currentTime=0;
@@ -9,6 +10,7 @@
         window.$_currentlyPlaying = evt.target;
     }, true);
 </script>
+
 
 
 <div class="content">
