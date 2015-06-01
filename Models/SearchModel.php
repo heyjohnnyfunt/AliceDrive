@@ -30,14 +30,33 @@ class SearchModel extends BaseModel{
         return array_map(create_function('$a', 'return $a;'), $row);
     }
 
-    function SearchNews($tag)
-    {
+    private function GetSpecResult($sql, $tag){
+
         $tag = filter_var($tag, FILTER_SANITIZE_STRING);
         if(empty($tag))
             return false;
 
         $param = "%{$tag}%";
 
+        if ($stmt = $this->_db->prepare($sql)) {
+            $stmt->bind_param('s', $param);
+            $stmt->execute();
+            $row = $this->bind_result_array($stmt);
+
+            $result = array();
+            if(!$stmt->error)
+            {
+                while($stmt->fetch()){
+                    $result[$row['id']] = $this->getCopy($row);
+                }
+            }
+            return $result;
+        }
+        return false;
+    }
+
+    function SearchNews($tag)
+    {
         $sql = "SELECT
                     id,
                     title,
@@ -48,30 +67,36 @@ class SearchModel extends BaseModel{
                     news
                 WHERE
                     title LIKE ?";
-        if ($stmt = $this->_db->prepare($sql)) {
-            $stmt->bind_param('s', $param);
-            $stmt->execute();
-            $row = $this->bind_result_array($stmt);
 
-            $countries = array();
-            if(!$stmt->error)
-            {
-                while($stmt->fetch()){
-                    $countries[$row['id']] = $this->getCopy($row);
-                }
-            }
-            return $countries;
-        }
-        return false;
-    }
-
-    function SearchMusic($tag)
-    {
-
+        return $this->GetSpecResult($sql, $tag);
     }
 
     function SearchTours($tag)
     {
+        $sql = "SELECT
+                    id,
+                    place,
+                    DATE_FORMAT(date_time, '%H:%i %d.%m.%Y') as date,
+                    body
+                FROM
+                    tours
+                WHERE
+                    place LIKE ?";
 
+        return $this->GetSpecResult($sql, $tag);
+    }
+
+    function SearchMusic($tag)
+    {
+        $sql = "SELECT
+                    id,
+                    source,
+                    name
+                FROM
+                    music
+                WHERE
+                    name LIKE ?";
+
+        return $this->GetSpecResult($sql, $tag);
     }
 }

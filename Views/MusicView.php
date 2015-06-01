@@ -21,7 +21,7 @@
     } else { ?>
 
         <h3>Welcome!</h3>
-        <p>We currently do not have any tours :(</p>
+        <p>We currently do not have any songs :(</p>
 
     <?php } ?>
 </div>
