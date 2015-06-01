@@ -1,3 +1,16 @@
+<!-- JavaScript Piece of code to stop music and reset to zero -->
+<script>window.addEventListener("play", function(evt)
+    {
+        if(window.$_currentlyPlaying)
+        {
+            window.$_currentlyPlaying.pause();
+            window.$_currentlyPlaying.currentTime=0;
+        }
+        window.$_currentlyPlaying = evt.target;
+    }, true);
+</script>
+
+
 <div class="content">
     <?php
     if ($articles > 0) {
@@ -7,13 +20,17 @@
                     <header>
                         <h3><?php echo $topic['name']; ?></h3>
                         <div>
-                          <!--  <iframe width="100%" height="140" scrolling="no" frameborder="no"
+                            <!-- Old Code for fetching music  from sound cloud! -->
+
+                            <!--  <iframe width="100%" height="140" scrolling="no" frameborder="no"
                                     src="<?php echo $topic['source']; ?>">
 
-                            </iframe>-->
+                            </iframe>
+                            -->
+
+                            <!-- New Sexy HTML5 Feature -->
                             <audio controls>
                                 <source src="<?php echo $topic['source']; ?>" type="audio/mpeg">
-
                                 Your browser does not support the audio element.
                             </audio>
                         </div>
