@@ -1,7 +1,7 @@
 <!-- JavaScript Piece of code to stop music and reset to zero -->
 <script>window.addEventListener("play", function(evt)
     {
-        if(window.$_currentlyPlaying)
+        if(window.$_currentlyPlaying && window.$_currentlyPlaying!=evt.target)
         {
             window.$_currentlyPlaying.pause();
             window.$_currentlyPlaying.currentTime=0;
@@ -15,12 +15,11 @@
     <?php
     if ($articles > 0) {
         foreach ($articles as $topic) { ?>
-            <a class="tourArticle">
+            <div class="tourArticle">
                 <article>
                     <header>
                         <h3><?php echo $topic['name']; ?></h3>
                         <div>
-                            <!-- New Sexy HTML5 Feature -->
                             <audio controls>
                                 <source src="<?php echo $topic['source']; ?>" type="audio/mpeg">
                                 Your browser does not support the audio element.
@@ -29,7 +28,7 @@
                     </header>
 
                 </article>
-            </a>
+            </div>
         <?php
         }
     } else { ?>

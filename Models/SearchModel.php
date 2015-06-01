@@ -39,7 +39,7 @@ class SearchModel extends BaseModel{
         $param = "%{$tag}%";
 
         if ($stmt = $this->_db->prepare($sql)) {
-            $stmt->bind_param('s', $param);
+            $stmt->bind_param('ss', $param, $param);
             $stmt->execute();
             $row = $this->bind_result_array($stmt);
 
@@ -66,7 +66,7 @@ class SearchModel extends BaseModel{
                 FROM
                     news
                 WHERE
-                    title LIKE ?";
+                    title LIKE ? OR body LIKE ?";
 
         return $this->GetSpecResult($sql, $tag);
     }
@@ -81,7 +81,7 @@ class SearchModel extends BaseModel{
                 FROM
                     tours
                 WHERE
-                    place LIKE ?";
+                    place LIKE ? OR body LIKE ?";
 
         return $this->GetSpecResult($sql, $tag);
     }
@@ -95,7 +95,7 @@ class SearchModel extends BaseModel{
                 FROM
                     music
                 WHERE
-                    name LIKE ?";
+                    name LIKE ? OR source LIKE ?";
 
         return $this->GetSpecResult($sql, $tag);
     }
