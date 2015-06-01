@@ -10,7 +10,6 @@
     }, true);
 </script>
 
-
 <div class="content">
     <?php
     if ($articles > 0) {
@@ -20,6 +19,7 @@
                     <header>
                         <h3><?php echo $topic['name']; ?></h3>
                         <div>
+
                             <audio controls>
                                 <source src="<?php echo $topic['source']; ?>" type="audio/mpeg">
                                 Your browser does not support the audio element.
@@ -34,7 +34,8 @@
     } else { ?>
 
         <h3>Welcome!</h3>
-        <p>Sadly, we have no audio and video materials :(</p>
+        <p>Sadly, we have no audio materials :(</p>
+
 
     <?php } ?>
 </div>

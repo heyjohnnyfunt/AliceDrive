@@ -1,5 +1,5 @@
 
-<!-- JavaScript Piece of code to stop music and reset to zero -->
+
 <script>window.addEventListener("play", function(evt)
     {
         if(window.$_currentlyPlaying && window.$_currentlyPlaying!=evt.target)
@@ -16,11 +16,16 @@
     <?php
     if ($articles > 0) {
         foreach ($articles as $topic) { ?>
+
+            <a class="tourArticle">
+
             <div class="article newsArticle">
+
                 <article>
                     <header>
                         <h3><?php echo $topic['name']; ?></h3>
                         <div>
+
                             <video height="200" width="400" controls>
                                 <source src="<?php echo $topic['source']; ?>" type="audio/mpeg">
                                 Your browser does not support the video element.
@@ -29,7 +34,11 @@
                     </header>
 
                 </article>
+
+            </a>
+
             </div>
+
         <?php
         }
     } else { ?>
