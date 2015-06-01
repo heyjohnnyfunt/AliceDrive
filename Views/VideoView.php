@@ -21,15 +21,6 @@
                     <header>
                         <h3><?php echo $topic['name']; ?></h3>
                         <div>
-                            <!-- Old Code for fetching music  from sound cloud! -->
-
-                            <!--  <iframe width="100%" height="140" scrolling="no" frameborder="no"
-                                    src="<?php echo $topic['source']; ?>">
-
-                            </iframe>
-                            -->
-
-                            <!-- New Sexy HTML5 Feature -->
                             <video height="200" width="400" controls>
                                 <source src="<?php echo $topic['source']; ?>" type="audio/mpeg">
                                 Your browser does not support the video element.
