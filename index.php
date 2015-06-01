@@ -7,6 +7,8 @@
  */
 define('INDEX_ACCESS_ALLOWED', 1);
 
+echo "Motherfucker";
+
 include("config/setup.php");
 include("config/bootstrap.php");
 
