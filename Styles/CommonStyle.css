@@ -153,14 +153,13 @@ footer {
 }
 
 .searchInputWide{
-    clear :both;
     font-size: 1.5em;
     padding: 5px;
     font-family: inherit;
     background: #000000;
     color: white;
     border: 1px #373855 solid;
-    border-radius: 4px 0 0 4px;
+    border-radius: 8px 0 0 8px;
     transition: all 0.25s ease-in-out;
 }
 

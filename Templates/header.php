@@ -14,11 +14,9 @@
         <!--<form method="post">
             <label for="searchInput"></label>
             <input type="text" id="searchInput" name="searchInput" class="searchInput">
-            <input type="submit" name="SearchButtonClick" class="search-icon" value="">
+            <input type="submit" name="SearchButtonClick" class="search-icon" value="" onclick="EditSearchQuery(this.form)">
         </form>-->
-        <a href="/search">
-            <div class="search-icon"></div>
-        </a>
+        <a href="/search" class="button">Поиск</a>
     </div>
 
     <a href="/">
