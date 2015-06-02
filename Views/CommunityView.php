@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="../Styles/Community.css" type="text/css">
 <script>
     var main = function () {
         var count = 500;

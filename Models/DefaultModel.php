@@ -53,4 +53,61 @@ class DefaultModel extends BaseModel{
 
         return $articles;
     }
+
+    public function GetMessages()
+    {
+        $sql = "SELECT
+                    message,
+                    username,
+                    DATE_FORMAT(time, '%H:%i %d.%m.%Y') as date
+                FROM
+                    CommunityChat
+                ORDER BY time DESC LIMIT 4";
+
+        $this->setSql($sql);
+        $articles = $this->getAll();
+
+        if (empty($articles)) {
+            return false;
+        }
+
+        return $articles;
+    }
+
+    public function GetMusic()
+    {
+        $sql = "SELECT
+                    source,
+                    name
+                FROM
+                    music
+                LIMIT 2";
+
+        $this->setSql($sql);
+        $articles = $this->getAll();
+
+        if (empty($articles)) {
+            return false;
+        }
+
+        return $articles;
+    }
+    public function GetVideos()
+    {
+        $sql = "SELECT
+                    source,
+                    name
+                FROM
+                    video
+        LIMIT 2";
+
+        $this->setSql($sql);
+        $articles = $this->getAll();
+
+        if (empty($articles)) {
+            return false;
+        }
+
+        return $articles;
+    }
 }

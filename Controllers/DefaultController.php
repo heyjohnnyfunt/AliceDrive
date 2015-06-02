@@ -18,6 +18,12 @@ class DefaultController extends BaseController{
             $this->view->set('articles', $articles);
             $concerts = $this->model->GetConcerts();
             $this->view->set('concerts', $concerts);
+            $messages = $this->model->GetMessages();
+            $this->view->set('messages', $messages);
+            $songs = $this->model->GetMusic();
+            $this->view->set('songs', $songs);
+            $videos = $this->model->GetVideos();
+            $this->view->set('videos', $videos);
 
             $this->view->set('header', 'WELCOME COMRADE!');
             $this->view->set('page_title', 'Home');

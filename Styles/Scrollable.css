@@ -11,7 +11,7 @@
     min-height: 100% !important;
     background-size: cover !important;
     background-attachment: fixed !important;
-    background-repeat: no-repeat !important;
+    background-repeat: repeat no-repeat !important;
     background-position: center center !important;
 }
 .cd-bg-1 {
@@ -22,12 +22,14 @@
 /* DEFAULT PAGE */
 
 .dp-bg-1{
-    background-image: url("../Images/band.jpg");
+    background-image: url("../Images/icons/bg-diagonal-lines.png"), url("../Images/band2.jpg");
     padding-top: 1%;
 }
-
-.dp-intro{
-    color: white;
-    text-align: center;
-    padding-top: 10%;
+.dp-bg-2{
+    background-image: url("../Images/icons/bg-diagonal-lines.png"),url("../Images/band.jpg");
+    padding-top: 1%;
+}
+.dp-bg-3{
+    background-image: url("../Images/icons/bg-diagonal-lines.png"),url("../Images/band3.jpg");
+    padding-top: 1%;
 }

@@ -7,6 +7,7 @@
 
 <link rel="stylesheet" type="text/css" href="/Styles/AdminHeader.css">
 <link rel="stylesheet" type="text/css" href="/Styles/CommonStyle.css">
+<link rel="stylesheet" type="text/css" href="../Styles/Community.css">
 <link rel="stylesheet" type="text/css" href="/Styles/Header.css">
 <link rel="stylesheet" type="text/css" href="/Styles/LoginStyle.css">
 <link rel="stylesheet" type="text/css" href="/Styles/RegStyle.css">
