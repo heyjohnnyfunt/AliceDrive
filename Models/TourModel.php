@@ -61,7 +61,7 @@ namespace MainWebSite {
                 FROM
                     tours
                 ORDER BY
-                    abs(now() - date) desc
+                    abs(now() - date_time)
                 LIMIT 1";
 
             $this->setSql($sql);
