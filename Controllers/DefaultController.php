@@ -14,13 +14,15 @@ class DefaultController extends BaseController{
     {
         try
         {
-            $articles = $this->model->get_data();
+            $articles = $this->model->GetNews();
             $this->view->set('articles', $articles);
+            $concerts = $this->model->GetConcerts();
+            $this->view->set('concerts', $concerts);
 
-            $this->view->set('header', 'Что у нас нового');
-            $this->view->set('page_title', 'News');
+            $this->view->set('header', 'WELCOME COMRADE!');
+            $this->view->set('page_title', 'Home');
 
-            $this->view->output('NewsView.php');
+            $this->view->output('DefaultView.php');
 
         } catch (Exception $e) {
             echo "Application error:" . $e->getMessage();

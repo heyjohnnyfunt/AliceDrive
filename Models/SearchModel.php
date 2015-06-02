@@ -30,8 +30,9 @@ class SearchModel extends BaseModel{
         return array_map(create_function('$a', 'return $a;'), $row);
     }
 
-    private function GetSpecResult($sql, $tag){
+    private function GetSpecResult($sql){
 
+        $tag = filter_input(INPUT_POST, 'searchInput', FILTER_SANITIZE_EMAIL);
         $tag = filter_var($tag, FILTER_SANITIZE_STRING);
         if(empty($tag))
             return false;
@@ -55,7 +56,7 @@ class SearchModel extends BaseModel{
         return false;
     }
 
-    function SearchNews($tag)
+    function SearchNews()
     {
         $sql = "SELECT
                     id,
@@ -68,10 +69,10 @@ class SearchModel extends BaseModel{
                 WHERE
                     title LIKE ? OR body LIKE ?";
 
-        return $this->GetSpecResult($sql, $tag);
+        return $this->GetSpecResult($sql);
     }
 
-    function SearchTours($tag)
+    function SearchTours()
     {
         $sql = "SELECT
                     id,
@@ -83,10 +84,10 @@ class SearchModel extends BaseModel{
                 WHERE
                     place LIKE ? OR body LIKE ?";
 
-        return $this->GetSpecResult($sql, $tag);
+        return $this->GetSpecResult($sql);
     }
 
-    function SearchMusic($tag)
+    function SearchMusic()
     {
         $sql = "SELECT
                     id,
@@ -97,6 +98,6 @@ class SearchModel extends BaseModel{
                 WHERE
                     name LIKE ? OR source LIKE ?";
 
-        return $this->GetSpecResult($sql, $tag);
+        return $this->GetSpecResult($sql);
     }
 }

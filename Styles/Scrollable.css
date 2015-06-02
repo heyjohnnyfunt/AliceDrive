@@ -14,7 +14,20 @@
     background-repeat: no-repeat !important;
     background-position: center center !important;
 }
-.cd-fixed-bg.cd-bg-1 {
+.cd-bg-1 {
     background-image: url("../Images/Band/alicedrive.jpg");
     padding-top: 30%;
+}
+
+/* DEFAULT PAGE */
+
+.dp-bg-1{
+    background-image: url("../Images/band.jpg");
+    padding-top: 1%;
+}
+
+.dp-intro{
+    color: white;
+    text-align: center;
+    padding-top: 10%;
 }

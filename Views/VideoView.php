@@ -1,4 +1,3 @@
-
 <!-- JavaScript Piece of code to stop music and reset to zero -->
 <script>window.addEventListener("play", function(evt)
     {

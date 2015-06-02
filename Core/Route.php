@@ -10,7 +10,7 @@ namespace MainWebSite{
     defined('ACCESS_ALLOWED') or die('Restricted Access');
     class Route
     {
-        protected $controller = 'News';
+        protected $controller = 'Default';
         protected $params = array();
         protected $namespace = __NAMESPACE__;
         protected $method = 'index';

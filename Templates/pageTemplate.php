@@ -14,7 +14,9 @@
 
     <section id="section" class="scene_element scene_element--fadeinup">
 
+        <?php if($page_title != 'Home'){?>
         <h1 class="content"><?php echo $header; ?></h1>
+        <?php } ?>
         <?php include BASE_PATH . D_VIEW . $contentView; ?>
 
     </section>
